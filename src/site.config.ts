@@ -1,7 +1,7 @@
 // Site-wide settings. Facts and numbers come from src/content (profile.json and the
 // work files); this file only decides what goes where.
 
-export type TrackKey = 'ai' | 'quant_dev' | 'quant_research';
+export type TrackKey = 'ai' | 'quant';
 export type LensKey = 'general' | 'ai' | 'quant';
 
 export const site = {
@@ -20,10 +20,9 @@ export const site = {
 
 export const tracks: Record<TrackKey, { long: string; short: string }> = {
   ai: { long: 'AI / Forward-Deployed Engineering', short: 'AI engineering' },
-  quant_dev: { long: 'Quant development', short: 'Quant dev' },
-  quant_research: { long: 'Quant research', short: 'Quant research' },
+  quant: { long: 'Quant development and research', short: 'Quant' },
 };
-export const trackOrder: TrackKey[] = ['ai', 'quant_dev', 'quant_research'];
+export const trackOrder: TrackKey[] = ['ai', 'quant'];
 
 // Key figures: each row names a work entry and the metric value to show. Values
 // and labels are read from that entry's metrics at build time.
@@ -60,7 +59,7 @@ export const lenses: Record<LensKey, {
     headline: 'general',
     bio: 'general',
     startHere: { href: '/work/pulse/', label: 'Pulse case study' },
-    tracks: ['ai', 'quant_dev', 'quant_research'],
+    tracks: ['ai', 'quant'],
     keyFigures: ['erste', 'pulse', 'platform', 'pm'],
     skills: [],
     homeAwards: ['imc-prosperity-4', 'jugend-forscht-2023', 'olympiad-prizes'],
@@ -84,7 +83,7 @@ export const lenses: Record<LensKey, {
     headline: 'quant',
     bio: 'quant',
     startHere: { href: '/work/pulse/', label: 'Pulse case study' },
-    tracks: ['quant_dev', 'quant_research'],
+    tracks: ['quant'],
     keyFigures: ['pulse', 'platform', 'erste'],
     skills: ['Quant research methods and tools', 'Mathematics', 'Programming languages', 'ML and scientific Python', 'Data, streaming and storage'],
     homeAwards: ['imc-prosperity-4', 'jugend-forscht-2023', 'olympiad-prizes'],

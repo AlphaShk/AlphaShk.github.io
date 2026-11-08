@@ -27,7 +27,8 @@ export type Item = {
   paper: (Link & { published: boolean }) | null;
 };
 
-const normTrack = (t: string): TrackKey => (t === 'quant_grad' ? 'quant_research' : (t as TrackKey));
+// Content files tag quant work as quant_dev, quant_research or quant_grad; the site shows one Quant track.
+const normTrack = (t: string): TrackKey => (t.startsWith('quant') ? 'quant' : (t as TrackKey));
 
 export function shortTitle(data: { title: string; short_title?: string }) {
   return data.short_title || data.title.split(':')[0].trim();

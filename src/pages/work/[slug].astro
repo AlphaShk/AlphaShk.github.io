@@ -39,7 +39,7 @@ const linkRows = [
   ...item.links.map((l) => ({ title: l.label, meta: l.meta || (l.href.includes('github.com') ? 'GitHub · public' : new URL(l.href, 'https://alphashk.github.io').host), href: l.href, primary: false })),
 ];
 const linksNo = String(body.sections.length + 1).padStart(2, '0');
-const showDisclaimer = item.tracks.includes('quant_research') && !/not investment advice/i.test(rendered);
+const showDisclaimer = (item.data.tracks || []).some((t: string) => t === 'quant_research' || t === 'quant_grad') && !/not investment advice/i.test(rendered);
 const note = sourceNotes[item.slug];
 const description = d.summary.length > 300 ? `${d.summary.slice(0, 297)}…` : d.summary;
 const statusMarks = item.status;

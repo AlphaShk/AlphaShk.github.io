@@ -42,7 +42,7 @@ const short = (i: Item) => (i.data as { tagline?: string }).tagline || i.data.su
         <span class="s-all">Showing {total} of {total}</span>
         {trackOrder.map((t) => <span class={`s-${t}`}>Showing {count(t)} of {total}: {trackLabel(t)}</span>)}
       </p>
-      <script is:inline>(function(){try{var t=new URLSearchParams(location.search).get("track"),e=t&&document.getElementById("f-"+t);if(e)e.checked=true;}catch(x){}})();</script>
+      <script is:inline>(function(){try{var t=new URLSearchParams(location.search).get("track");if(t&&t.indexOf("quant")===0)t="quant";var e=t&&document.getElementById("f-"+t);if(e)e.checked=true;}catch(x){}})();</script>
     </div>
   )}
   <div class="work-grid">

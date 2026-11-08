@@ -491,11 +491,9 @@ a .icon--ext { margin-left: 4px; color: var(--ink-3); }
 .filter__status span { display: none; }
 .filter__status .s-all { display: inline; }
 .works:has(#f-ai:checked) .filter__status .s-all,
-.works:has(#f-quant_dev:checked) .filter__status .s-all,
-.works:has(#f-quant_research:checked) .filter__status .s-all { display: none; }
+.works:has(#f-quant:checked) .filter__status .s-all { display: none; }
 .works:has(#f-ai:checked) .filter__status .s-ai,
-.works:has(#f-quant_dev:checked) .filter__status .s-quant_dev,
-.works:has(#f-quant_research:checked) .filter__status .s-quant_research { display: inline; }
+.works:has(#f-quant:checked) .filter__status .s-quant { display: inline; }
 .work-grid > .card[hidden], .mini li[hidden] { display: none; }
 /* Row-filling widths set by the WorkGrid script after filtering. */
 @media (min-width: 1024px) {
