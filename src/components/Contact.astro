@@ -3,10 +3,11 @@ import Email from './Email.astro';
 import RoleLabels from './RoleLabels.astro';
 import SectionHead from './SectionHead.astro';
 import { profile } from '../lib/data';
-import { site } from '../site.config';
+import { site, lenses, type LensKey } from '../site.config';
 
-interface Props { kicker: string }
-const { kicker } = Astro.props;
+interface Props { kicker: string; lens?: LensKey }
+const { kicker, lens = 'general' } = Astro.props;
+const identity = profile.identity as typeof profile.identity & { availability?: string; work_line?: string };
 const strip = (u: string) => u.replace(/^https?:\/\/(www\.)?/, '');
 ---
 <section class="section" id="contact" aria-labelledby="contact-title">
@@ -15,8 +16,9 @@ const strip = (u: string) => u.replace(/^https?:\/\/(www\.)?/, '');
     <div class="contact">
       <div class="contact__text">
         <p class="contact__lead" id="open-to">Open to roles in</p>
-        <RoleLabels labelledby="open-to" />
-        <p class="contact__loc">{profile.identity.location_line}</p>
+        <RoleLabels labelledby="open-to" only={lenses[lens].tracks} />
+        <p class="contact__loc">{profile.identity.location_line}{identity.work_line && <> · {identity.work_line}</>}</p>
+        {identity.availability && <p class="contact__loc">{identity.availability}</p>}
       </div>
       <dl class="contact__list">
         <div><dt class="label">Email</dt><dd><Email variant="text" /></dd></div>

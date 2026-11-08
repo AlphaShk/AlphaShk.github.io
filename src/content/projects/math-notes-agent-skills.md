@@ -52,7 +52,7 @@ Each skill gives the mechanical work to deterministic scripts and puts fail-clos
 
 - **Validation gate.** Between LLM extraction and the build, a merge step refuses missing or extra items, duplicate ids, dangling edges, dependency cycles, unbalanced `$`, braces or `\left`–`\right`, a bare `<` and LaTeX in labels.
 - **Render gate.** MathJax's `noerrors` and `noundefined` packages are removed, so an undefined macro aborts the build and names the macro instead of shipping red text.
-- **Provenance.** Reconstructed proofs and outlines are labelled “reconstructed (not in the notes)”.
+- **Provenance.** Reconstructed proofs and outlines are labeled “reconstructed (not in the notes)”.
 - **Handwriting audits.** Page tiling for a vision model, verbatim lecturer numbering, and audits for duplicates, backwards numbering, gaps and coverage.
 
 ## Results

@@ -32,7 +32,7 @@ links:
   - label: "Repository"
     href: "https://github.com/AlphaShk/puppet-cube-solver"
     kind: repo
-ai_note: "The original app was built with OpenAI's Codex agent; this packaging and hardening pass (worker thread, CLI, tests, CI and documentation) was done with Claude Code."
+ai_note: "Built under my direction: the original app with OpenAI's Codex agent, and this packaging and hardening pass (worker thread, CLI, tests, CI and documentation) with Claude Code."
 ---
 
 ## The problem
@@ -42,7 +42,7 @@ The Puppet Cube is a 3×3×3 shape mod in which several pieces are fused into la
 ## What I built
 
 - **An edge-only cube model.** Face turns are −90° Rodrigues rotations of integer face vectors, so no move table is typed by hand, and wide turns and regrips come from the same code.
-- **A verified catalogue.** The 36 published algorithms are simulated in the guide's exact grips, with the Puppet blocks modelled as hidden wide turns, and de-duplicated into 34 verified entries.
+- **A verified catalogue.** The 36 published algorithms are simulated in the guide's exact grips, with the Puppet blocks modeled as hidden wide turns, and de-duplicated into 34 verified entries.
 - **A fallback search** over the 14 distinct macro effects: BFS up to 4 macros, and for exact flips a bidirectional meet-in-the-middle search that reaches 8 macros while holding at most 60,838 states, where a one-way search would need 3,830,186 states by six macros.
 - **Group-theory checks.** All macros are even permutations, so an odd number of swaps without two free edges is rejected up front.
 

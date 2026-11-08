@@ -8,7 +8,7 @@ import { profile } from '../lib/data';
 interface Props { lens: LensKey }
 const { lens } = Astro.props;
 const conf = lenses[lens];
-const identity = profile.identity as typeof profile.identity & { tagline?: string };
+const identity = profile.identity as typeof profile.identity & { tagline?: string; availability?: string; work_line?: string };
 const tagline = identity.tagline || site.taglineFallback;
 const segments = profile.headlines[conf.headline].split(' · ').map((s) => s.trim());
 const affil = (lens === 'general' ? segments.slice(0, 2) : segments.slice(0, 3)).map((s) => s.charAt(0).toUpperCase() + s.slice(1));
@@ -23,12 +23,18 @@ const bio = lens === 'general' ? '' : profile.bios[conf.bio];
       <dl class="facts">
         <div>
           <dt class="label" id="roles-label">Target roles</dt>
-          <dd><RoleLabels labelledby="roles-label" /></dd>
+          <dd><RoleLabels labelledby="roles-label" only={conf.tracks} /></dd>
         </div>
         <div>
           <dt class="label">Location</dt>
-          <dd>{profile.identity.location_line}</dd>
+          <dd>{profile.identity.location_line}{identity.work_line && <> · {identity.work_line}</>}</dd>
         </div>
+        {identity.availability && (
+          <div>
+            <dt class="label">Availability</dt>
+            <dd>{identity.availability}</dd>
+          </div>
+        )}
       </dl>
       <div class="hero__cta">
         <Email variant="primary" />

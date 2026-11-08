@@ -34,7 +34,7 @@ links:
   - label: "Repository"
     href: "https://github.com/AlphaShk/bass-lv-calibration"
     kind: repo
-ai_note: "The summer-2026 notebook is mine. The package, the tests, the data script, the quadrature fix and the extra checks came out of the portfolio build and were done with Claude Code."
+ai_note: "The summer-2026 research notebook is mine. The package, tests and data script, and the exact-convolution fix with its extra checks, were built later with Claude Code under my direction."
 ---
 
 ## The problem

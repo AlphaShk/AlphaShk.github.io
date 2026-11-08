@@ -40,7 +40,7 @@ visuals:
   - src: /assets/imc-prosperity-4/fill-model-check.svg
     alt: "Grouped column chart of ASH PnL over the six public days in a local backtest. Lenient matching: Round-2 v1 66,130 XIRECs, Round-2 final candidate with wider passive quotes 99,620, a gain of 33,490. Strict matching: 17,947 for both, no change."
     caption: Local backtest over the six public days (prosperity3bt, Round-2 position limits). PEPPER was identical in both versions, so only ASH is shown; the 33,490 gain is +6.1% of total six-day PnL and appears only under lenient matching.
-ai_note: I used Claude Code as a coding assistant for the code and documentation.
+ai_note: The models, quoting logic and research are mine; I used Claude Code as a coding assistant for the code and documentation.
 ---
 
 ## The problem
@@ -84,7 +84,7 @@ In this team entry I built the fair-value models and quoting logic and wrote the
 ## What I learned
 
 - **The fill model can outweigh the strategy.** In local backtests the same ASH engine made 66,130 or 17,947 XIRECs over six days, depending only on the fill model.
-- **Inventory was the biggest lever.** The one version that held a more balanced PEPPER inventory scored 1,267 XIRECs below its predecessor.
+- **Inventory was the biggest lever.** The one version that held a more balanced PEPPER inventory gave up 1,267 XIRECs of test-run PnL; carrying the drift paid.
 - **A fixed test sample is fair but small.** Eight runs on the same 1,000 ticks compare cleanly, but repeated tuning can fit that sample.
 - **A regime filter is hard to test without a regime change.** In a replay of the public data, the last Round-1 test version switched state more than 200 times a day; the slower Round-2 settings never reached break. PEPPER's trend never broke, so the data could not decide between them.
 
@@ -92,6 +92,5 @@ In this team entry I built the fair-value models and quoting logic and wrote the
 
 Local backtests use jmerle's open-source [prosperity3bt](https://github.com/jmerle/imc-prosperity-3-backtester). Ideas and workflow build on public Prosperity 3 write-ups by jmerle and the Frankfurt Hedgehogs.
 
-Correction: my April notes said the wider quotes never fill. Re-running the backtests showed them filling about as often as the narrower quotes under lenient matching, at prices further from the mid.
 
 The code stays private and my teammates stay unnamed. Research only; not investment advice.

@@ -35,7 +35,7 @@ links:
   - label: "Repository"
     href: "https://github.com/AlphaShk/ects-ledger"
     kind: repo
-ai_note: "This curated copy (refactor, tests, CI, documentation and screenshots) was produced with Claude Code under my direction."
+ai_note: "Built under my direction: this curated copy (refactor, tests, CI, documentation and screenshots) was produced with Claude Code."
 ---
 
 ## The problem

@@ -6,7 +6,7 @@ import { aiParagraphs, getItem, profile } from '../lib/data';
 
 const { about, ai } = aiParagraphs();
 const pulse = await getItem('pulse');
-const credentials = profile.credentials as { id: string; title: string; year: string; detail: string }[];
+const credentials = [...(profile.credentials as { id: string; title: string; year: string; detail: string }[])].sort((a, b) => Number(b.year.slice(-4)) - Number(a.year.slice(-4)));
 ---
 <Base title="About · Denys Shkola" description={about[0]} section="about" compactFooter={false}>
   <section class="section page-head" aria-labelledby="about-title">

@@ -35,7 +35,7 @@ visuals:
   - src: /assets/market-data-platform/architecture.svg
     alt: "Data-flow diagram. Crypto exchanges, with order books from 31 venues, feed Rust collectors that hold 33 exchange integrations; 19 of them and the shared normalization layer are marked as mine. The collectors publish normalized events on a NATS message bus. Go services, a gateway and an engine, consume the events and read and write three stores: ClickHouse (analytical), PostgreSQL (relational) and Redis (in-memory). A Node API, which is also the platform's control plane, sits between the Go services and the React/TypeScript web clients."
     caption: "High-level data flow, simplified: from the exchanges through the Rust collectors and NATS to the Go services, then through the Node API to the web clients. Blue text marks my part of the collector layer."
-ai_note: I shipped features end to end with AI coding agents (Claude Code, Codex), under pull-request review and CI gates.
+ai_note: I owned my features end to end, from design to merged pull request; AI coding agents (Claude Code, Codex) helped write the code, under pull-request review and CI gates.
 ---
 
 ## The problem
@@ -70,7 +70,7 @@ I co-developed this production market-data and signal platform with its owner as
 - 131 pull requests opened and 101 merged; 489 of the 2,428 commits in the repository history (all branches, counted in November 2026).
 - A continuity check on the real Bybit feed covered 2,634 deltas with zero gaps.
 
-**Platform measurements.** My co-developer took these on 20–21 July 2026, before my batch of 19 exchange integrations landed, so they describe the platform, not a benchmark of my own work.
+**Platform measurements.** My co-developer took these on 20–21 July 2026, before my batch of 19 exchange integrations landed, so they describe the platform as a whole.
 
 | When | What the platform measured |
 |---|---|

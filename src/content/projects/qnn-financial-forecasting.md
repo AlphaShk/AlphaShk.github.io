@@ -21,15 +21,15 @@ card:
     - key: "Data"
       value: "Daily bars of BNDX, GLD, IBM, NVDA and USO, split chronologically 359/119/121"
 metrics:
-  - value: "1"
-    label: "grade of the BSc thesis, University of Vienna"
-    kind: count
+  - value: "Grade 1"
+    label: "BSc thesis, University of Vienna (the best Austrian grade)"
+    kind: outcome
   - value: "121"
     label: "held-out test days, benchmarked against classical baselines"
     kind: count
-  - value: "32"
-    label: "offline tests, run in GitHub Actions CI"
-    kind: count
+  - value: "Bit for bit"
+    label: "one command retrains the published configurations and reproduces the thesis test RMSEs"
+    kind: evidence
 links:
   - label: "Repository"
     href: "https://github.com/AlphaShk/qnn-financial-forecasting"
@@ -38,7 +38,7 @@ links:
     href: "https://github.com/AlphaShk/qnn-financial-forecasting/blob/main/docs/thesis.pdf"
     kind: thesis
     meta: "BSc thesis · PDF · 1.8 MB"
-ai_note: "The thesis code is from my BSc thesis. This public edition (packaging, tests, CI, documentation and the noise-model correction) was prepared with Claude Code."
+ai_note: "The thesis code and results are my own BSc work. This public edition (packaging, tests, CI, documentation and the noise-model correction) was prepared with Claude Code under my direction."
 ---
 
 ## The problem

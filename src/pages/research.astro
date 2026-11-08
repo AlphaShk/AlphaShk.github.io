@@ -35,7 +35,7 @@ const pubs = await Promise.all(
 <Base title="Research · Denys Shkola" description="A working paper on alpha search in crypto perpetual futures, a BSc thesis on quantum neural networks for financial forecasting, and a replication of the Bass local-volatility model on SPX options." section="research">
   <section class="section page-head" aria-labelledby="research-title">
     <div class="wrap">
-      <SectionHead kicker={`Research · ${pubs.length} entries`} title="Research" id="research-title" level="h1" intro="A working paper, a bachelor thesis and a paper replication, newest first. Each one states its result, including the negative ones." />
+      <SectionHead kicker={`Research · ${pubs.length} entries`} title="Research" id="research-title" level="h1" intro="A working paper, a bachelor thesis and a paper replication, newest first, each with its data, method and result as tested." />
       <ol class="pubs">
         {pubs.map((p, i) => (
           <li>

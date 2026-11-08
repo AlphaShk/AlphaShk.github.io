@@ -7,7 +7,7 @@ import Skills from '../components/Skills.astro';
 import { bytesLabel, files, profile } from '../lib/data';
 import { site } from '../site.config';
 
-const credentials = profile.credentials as { id: string; title: string; year: string; detail: string }[];
+const credentials = [...(profile.credentials as { id: string; title: string; year: string; detail: string }[])].sort((a, b) => Number(b.year.slice(-4)) - Number(a.year.slice(-4)));
 const pdfMeta = [files.cv.pages ? `${files.cv.pages} page${files.cv.pages > 1 ? 's' : ''}` : '', 'PDF', bytesLabel(files.cv.bytes)].filter(Boolean).join(' · ');
 const research = profile.research;
 ---

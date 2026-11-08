@@ -37,7 +37,7 @@ export type KeyFigureDef = {
 };
 export const keyFigures: KeyFigureDef[] = [
   { id: 'erste', source: 'Erste Digital · production', work: 'erste-ai-modernization', value: '>80%' },
-  { id: 'pulse', source: 'Pulse · quant research', work: 'pulse', value: '3.45', suffix: ' Sharpe' },
+  { id: 'pulse', source: 'Pulse · quant research', work: 'pulse', value: '1,871', suffix: ' trials' },
   { id: 'platform', source: 'Market-data platform · Rust', work: 'market-data-platform', value: '19 of 33' },
   { id: 'pm', source: 'Prediction markets · LLM system', work: 'prediction-markets', value: '≈ 255k' },
 ];
@@ -75,7 +75,7 @@ export const lenses: Record<LensKey, {
     tracks: ['ai'],
     keyFigures: ['erste', 'pm', 'platform', 'pulse'],
     skills: ['AI engineering', 'Programming languages', 'Backend, web and mobile', 'Data, streaming and storage', 'Infrastructure and delivery'],
-    homeAwards: ['jugend-forscht-2023', 'imc-prosperity-4', 'olympiad-prizes'],
+    homeAwards: ['imc-prosperity-4', 'jugend-forscht-2023', 'olympiad-prizes'],
     work: ['erste-ai-modernization', 'prediction-markets', 'market-data-platform', 'pulse', 'math-notes-agent-skills', 'n8n-pi-local-ai-agents'],
   },
   quant: {
@@ -87,7 +87,7 @@ export const lenses: Record<LensKey, {
     tracks: ['quant_dev', 'quant_research'],
     keyFigures: ['pulse', 'platform', 'erste'],
     skills: ['Quant research methods and tools', 'Mathematics', 'Programming languages', 'ML and scientific Python', 'Data, streaming and storage'],
-    homeAwards: ['olympiad-prizes', 'imc-prosperity-4', 'jugend-forscht-2023'],
+    homeAwards: ['imc-prosperity-4', 'jugend-forscht-2023', 'olympiad-prizes'],
     work: ['pulse', 'market-data-platform', 'imc-prosperity-4', 'bass-lv-calibration', 'qnn-financial-forecasting', 'orderbook-spoofing', 'prediction-markets'],
   },
 };

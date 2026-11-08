@@ -40,7 +40,7 @@ visuals:
   - src: /assets/orderbook-spoofing/side-alternation.svg
     alt: "Mirrored column chart, one column per 15-minute bucket over the 14-hour capture, bid-side placements above the line and ask-side below. Activity comes in one-sided bursts that switch sides: mostly ask side from about hour 3 to hour 7 of the capture (up to 288 per bucket), then bid side around hour 8, ask side around hour 9 (up to 304), bid side around hour 10 (up to 236), ask side just before hour 11, bid side from about hour 11 to hour 12, ask side around hour 13 and a last bid-side burst near hour 14."
     caption: "Large placements per 15 minutes, bid side above the line and ask side below: one-sided bursts that switch sides through the night. Rebuilt from the bucket table in the analysis report."
-ai_note: I wrote the specification and set the questions; Claude Code agents made the detailed design choices, wrote the code and ran the analysis passes.
+ai_note: I wrote the specification, set the research questions and directed the analysis; Claude Code agents worked out the detailed design, wrote the code and ran the analysis passes.
 ---
 
 ## The problem

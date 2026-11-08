@@ -77,18 +77,37 @@ const short = (i: Item) => (i.data as { tagline?: string }).tagline || i.data.su
   </div>
 </div>
 <script is:inline>(function(){
+  // Filtering hides cards; layout() then resizes the visible ones so every row is full:
+  // lg-* classes apply at >= 1024px (12 columns, rows of 3), md-* at 640-1023px (rows of 2).
+  var SIZES=['lg-w4','lg-w6','lg-w8','lg-w12','md-w12'];
+  function layout(cards){
+    cards.forEach(function(c){ SIZES.forEach(function(k){ c.classList.remove(k); }); });
+    var feats=cards.filter(function(c){ return c.classList.contains('card--feature'); });
+    var rest=cards.filter(function(c){ return !c.classList.contains('card--feature'); });
+    var lgRest=rest.slice();
+    if(feats.length===1){
+      if(lgRest.length){ feats[0].classList.add('lg-w8'); lgRest.shift().classList.add('lg-w4'); }
+      else feats[0].classList.add('lg-w12');
+    }
+    var r=lgRest.length%3;
+    if(r===1) lgRest[lgRest.length-1].classList.add('lg-w12');
+    if(r===2){ lgRest[lgRest.length-1].classList.add('lg-w6'); lgRest[lgRest.length-2].classList.add('lg-w6'); }
+    if(rest.length%2===1) rest[rest.length-1].classList.add('md-w12');
+  }
   document.querySelectorAll('.works').forEach(function(w){
-    var radios=w.querySelectorAll('.filter input[name="track"]'); if(!radios.length) return;
+    var radios=w.querySelectorAll('.filter input[name="track"]');
     function apply(){
-      var t=(w.querySelector('.filter input:checked')||{}).value||'all', n=0;
+      var t=(w.querySelector('.filter input:checked')||{}).value||'all', n=0, vis=[];
       w.querySelectorAll('.work-grid > .card').forEach(function(c){
         var mini=c.querySelectorAll('.mini li[data-tracks]'), show;
         if(mini.length){ var k=0; mini.forEach(function(li){ var ok=t==='all'||(' '+li.dataset.tracks+' ').indexOf(' '+t+' ')>=0; li.hidden=!ok; if(ok)k++; }); show=k>0; }
         else if(c.classList.contains('card--all')) show=true;
         else show=t==='all'||(' '+(c.dataset.tracks||'')+' ').indexOf(' '+t+' ')>=0;
         c.hidden=!show;
+        if(show) vis.push(c);
         var idx=c.querySelector('.card__idx'); if(show&&idx){ n++; idx.textContent=String(n).padStart(2,'0'); }
       });
+      layout(vis);
     }
     radios.forEach(function(r){ r.addEventListener('change',apply); }); apply();
   });

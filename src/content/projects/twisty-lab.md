@@ -26,7 +26,7 @@ metrics:
     label: "Vitest tests, including the rejection paths"
     kind: count
   - value: "24"
-    label: "whole-cube orientations the verifier normalises across"
+    label: "whole-cube orientations the verifier normalizes across"
     kind: evidence
 links:
   - label: "Live demo"
@@ -35,17 +35,17 @@ links:
   - label: "Repository"
     href: "https://github.com/AlphaShk/twisty-lab"
     kind: repo
-ai_note: "The original app was built with OpenAI's Codex agent; the hardening passes (verifier coverage, tests, CI and documentation) were done with Claude Code."
+ai_note: "Built under my direction: the original app with OpenAI's Codex agent, and the hardening passes (verifier coverage, tests, CI and documentation) with Claude Code."
 ---
 
 ## The problem
 
-OLL is the third step of the CFOP speedsolving method: with the first two layers solved, one algorithm turns every top sticker to the top colour. There are 57 cases. Cubers keep swapping in alternatives they find online, and a missing prime or cube rotation goes unnoticed until it wrecks a solve.
+OLL is the third step of the CFOP speedsolving method: with the first two layers solved, one algorithm turns every top sticker to the top color. There are 57 cases. Cubers keep swapping in alternatives they find online, and a missing prime or cube rotation goes unnoticed until it wrecks a solve.
 
 ## What I built
 
 - **Library and workbench.** A filterable case library, an animated 3D or top-view 2D cube for every algorithm, move phrases you can replay on their own, and per-case notes and learning status.
-- **Verifier.** It rebuilds the case from the inverse of the reference algorithm on a cubing.js KPuzzle model, normalises across the 24 whole-cube orientations, and accepts when the last layer is oriented and F2L is intact. A custom algorithm must pass before it can become the preferred one.
+- **Verifier.** It rebuilds the case from the inverse of the reference algorithm on a cubing.js KPuzzle model, normalizes across the 24 whole-cube orientations, and accepts when the last layer is oriented and F2L is intact. A custom algorithm must pass before it can become the preferred one.
 - **Generated diagrams.** A test proves the reference set covers all of OLL: 57 distinct orientation classes under U turns, and 216 last-layer states in 58 classes by Burnside's lemma, one of them solved.
 - **One build, two targets.** GitHub Pages and an Electron shell with context isolation and sandboxing on.
 

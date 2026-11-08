@@ -32,7 +32,7 @@ links:
   - label: "Repository"
     href: "https://github.com/AlphaShk/n8n-pi-local-ai-agents"
     kind: repo
-ai_note: "The original Pi scripts were written with Codex under my direction; the curation for this repository (tests, import tooling, documentation) was done with Claude Code."
+ai_note: "I designed and operate the workflows; the original Pi scripts were written with Codex under my direction, and the curation for this repository (tests, import tooling, documentation) with Claude Code."
 ---
 
 ## The problem
