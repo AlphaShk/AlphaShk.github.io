@@ -46,7 +46,7 @@ The platform's job is to collect order books, trades and open interest from arou
 
 ## What I built
 
-I co-developed this production market-data and signal platform with Roman Shkola, who owns it, as a side project in my free time. We were a team of two, and my active period ran from February to September 2026. My part:
+I co-developed this production market-data and signal platform with its owner as a side project in my free time. We were a team of two, and my active period ran from February to September 2026. My part:
 
 - **Exchange integrations.** I implemented 19 of the platform's 33 Rust exchange integrations, covering order books, trades and open interest.
 - **Normalization.** I implemented the shared instrument and trade normalization framework, so every venue reaches the rest of the system in one format.
@@ -86,4 +86,4 @@ I co-developed this production market-data and signal platform with Roman Shkola
 
 ## Notes
 
-The code is private and the platform belongs to Roman Shkola, so this page shows no code, parameters or feature details. I am happy to walk through the architecture and my integrations in an interview.
+The code is private and the platform is privately owned, so this page shows no code, parameters or feature details. I am happy to walk through the architecture and my integrations in an interview.
