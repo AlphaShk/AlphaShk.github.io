@@ -25,8 +25,8 @@ metrics:
   - value: "≈ 0.5 s"
     label: "slowest request, an 8-macro flip, on an Apple M5"
     kind: operations
-  - value: "89"
-    label: "unittest tests, with CI on Python 3.11–3.13"
+  - value: "96"
+    label: "unit tests, with CI on Python 3.11 to 3.14"
     kind: count
 links:
   - label: "Repository"
@@ -43,9 +43,9 @@ The Puppet Cube is a 3×3×3 shape mod in which several pieces are fused into la
 
 - **An edge-only cube model.** Face turns are −90° Rodrigues rotations of integer face vectors, so no move table is typed by hand, and wide turns and regrips come from the same code.
 - **A verified catalogue.** The 36 published algorithms are simulated in the guide's exact grips, with the Puppet blocks modelled as hidden wide turns, and de-duplicated into 34 verified entries.
-- **A fallback search** over the 14 distinct macro effects: BFS up to 4 macros, and for exact flips a bidirectional meet-in-the-middle search that reaches 8 macros without the 3.8 million states a one-way search needs by 6.
+- **A fallback search** over the 14 distinct macro effects: BFS up to 4 macros, and for exact flips a bidirectional meet-in-the-middle search that reaches 8 macros while holding at most 60,838 states, where a one-way search would need 3,830,186 states by six macros.
 - **Group-theory checks.** All macros are even permutations, so an odd number of swaps without two free edges is rejected up front.
 
 ## Results
 
-Every two-edge flip, single swap and unprotected 3-cycle on the 9 movable edges is answered; the slowest request, an 8-macro flip, takes about 0.5 s on an Apple M5. Verification is against the simulation model.
+Every two-edge flip, single swap and unprotected 3-cycle on the 9 movable edges is answered; the slowest request, an eight-macro exact flip, takes about half a second on an Apple M5. Verification is against the simulation model.

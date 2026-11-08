@@ -7,7 +7,6 @@ role: Co-developer, two-person team
 status: Private code · side project
 tracks:
   - quant_dev
-  - ai
   - quant_research
 order: 2
 featured: true
@@ -69,7 +68,6 @@ I co-developed this production market-data and signal platform with Roman Shkola
 
 - 19 of 33 exchange integrations, plus the shared normalization framework.
 - 131 pull requests opened and 101 merged; 489 of the 2,428 commits in the repository history (all branches, counted in November 2026).
-- Of the lines still in the codebase on 9 September 2026, git blame attributes to me 40.7% of the Rust collector code, 25.3% of the Go code, 32.7% of the React UI and 36.6% of the Node code.
 - A continuity check on the real Bybit feed covered 2,634 deltas with zero gaps.
 
 **Platform measurements.** My co-developer took these on 20–21 July 2026, before my batch of 19 exchange integrations landed, so they describe the platform, not a benchmark of my own work.

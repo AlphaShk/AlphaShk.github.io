@@ -27,7 +27,7 @@ metrics:
   - value: "61%"
     label: "higher covariance RMSE than reusing the previous covariance matrix"
     kind: finding
-  - value: "27"
+  - value: "32"
     label: "offline tests, run in GitHub Actions CI"
     kind: count
 links:

@@ -117,5 +117,5 @@ export const extraLinks: Record<string, { label: string; href: string; kind?: 'o
 // Source notes shown on a work page (cited, not linked).
 export const sourceNotes: Record<string, string> = {
   'imc-prosperity-4':
-    'Phase 2: e-mail from the IMC Prosperity team, 22 Apr 2026 (“Congratulations on your Prosperity success so far”), which confirmed that the first mission was complete and that Round 3 opens Phase 2.',
+    'Phase 2: e-mail from IMC Prosperity, 22 Apr 2026, “Congratulations on your Prosperity success so far”: “Great job on successfully completing your first mission … your journey enters a whole new phase”. Round 3 opens Phase 2.',
 };

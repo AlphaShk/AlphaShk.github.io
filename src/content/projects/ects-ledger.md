@@ -17,13 +17,13 @@ card:
   result: "Clash detection works on real meeting dates, so interleaved fortnightly slots are not flagged; the catalogue rebuilds itself weekly from u:find."
   facts:
     - key: "Evaluation"
-      value: "66 automated tests (42 pytest + 24 node:test) on saved u:find responses, in CI"
+      value: "71 automated tests (45 pytest + 26 node:test) on saved u:find responses, in CI"
 metrics:
   - value: "137"
     label: "course documents fetched by a full catalogue rebuild, in 3.1–5.3 s (seven local runs; network-bound)"
     kind: operations
-  - value: "66"
-    label: "automated tests: 42 pytest and 24 node:test"
+  - value: "71"
+    label: "automated tests: 45 pytest and 26 node:test"
     kind: count
   - value: "90%"
     label: "of course documents must arrive, or the generator refuses to write a catalogue"

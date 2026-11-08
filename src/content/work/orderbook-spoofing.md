@@ -8,7 +8,6 @@ status: Private code · collection deployed June 2026
 tracks:
   - quant_dev
   - quant_research
-  - ai
 order: 4
 featured: true
 gated: false

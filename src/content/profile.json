@@ -53,7 +53,7 @@
         "Co-developed, in a two-person team with owner and operator Roman Shkola, a private production crypto market-data and signal platform with order books from 31 venues: Rust collectors → NATS → Go gateway and market engine → ClickHouse, PostgreSQL and Redis, with a Node control plane and a React/TypeScript UI.",
         "Implemented 19 of the platform's 33 Rust exchange integrations (order books, trades, candles, open interest) and the shared instrument/trade normalization framework; opened about 130 pull requests (101 merged).",
         "Hardened real-time data integrity: per-market order-book sequencing by epoch, sequence number and timestamp, which removed phantom liquidity walls, and live-verified delta-continuity checks (2,634 Bybit deltas, zero gaps).",
-        "The platform measured about 5,000 normalized events/s with 1 ms consumer lag in a 30-second production window, and about 500k WebSocket messages at about 61 ms p99 with zero errors in a one-minute, 25-client load test (measured by the co-developer in Jul 2026, before my 19-venue batch)."
+        "The platform measured about 5,000 normalized events/s with 1 ms consumer lag in a 30-second production window, and about 500k WebSocket messages and an HTTP p99 of about 61 ms with zero errors in a one-minute, 25-client load test (measured by the co-developer in Jul 2026, before my 19-venue batch)."
       ],
       "tracks": [
         "ai",
@@ -180,7 +180,7 @@
     {
       "id": "alpha-search-crypto-perps",
       "title": "Alpha search in crypto perpetual futures",
-      "kind": "Working paper (unpublished, not peer-reviewed)",
+      "kind": "Working paper, short public edition (10 pages, not peer-reviewed)",
       "year": 2026,
       "date": "2026-10-21",
       "link": "/papers/alpha-search-crypto-perps-2026-short.pdf",

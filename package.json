@@ -13,8 +13,7 @@
     "prebuild": "npm run sync",
     "build": "astro build",
     "dev": "astro dev",
-    "preview": "astro preview",
-    "check:links": "node scripts/check-links.mjs"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",

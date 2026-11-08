@@ -27,7 +27,7 @@ metrics:
   - value: "10 and 12"
     label: "fixed-point iterations per interval, down from 254 and 499"
     kind: count
-  - value: "52"
+  - value: "55"
     label: "tests on synthetic inputs, including Black–Scholes recovery, in CI"
     kind: count
 links:
