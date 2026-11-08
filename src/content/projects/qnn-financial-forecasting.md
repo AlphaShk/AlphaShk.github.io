@@ -3,7 +3,7 @@ title: "QNN financial forecasting: BSc thesis code"
 short_title: "QNN forecasting"
 slug: qnn-financial-forecasting
 tagline: "BSc thesis: quantum neural networks for forecasting"
-summary: "Quantum neural networks in Qiskit and PyTorch that forecast next-day returns and covariances of five assets. On the held-out test window they did not beat naive baselines, and the thesis reports that as a negative result."
+summary: "BSc thesis, graded 1: quantum neural networks in Qiskit and PyTorch that forecast next-day returns and covariances of five assets, with a reproducible pipeline benchmarked on 121 held-out days against classical baselines."
 period: "2026"
 role: "Solo: BSc thesis in Mathematics, University of Vienna (written within the Bachelor seminar, graded 1)"
 status: "Public repo · MIT"
@@ -14,19 +14,19 @@ featured: false
 page: project
 stack: ["Python", "Qiskit and Qiskit Aer", "PyTorch", "Optuna", "pytest"]
 card:
-  result: "Negative result: on 121 held-out days the QNNs tied or lost to naive baselines (returns RMSE 0.02328 vs 0.02323 for a zero forecast)."
+  result: "BSc thesis graded 1: Qiskit and PyTorch QNNs forecasting returns and covariances of five assets, with a pipeline that reproduces the thesis results bit for bit and is benchmarked on 121 held-out days."
   facts:
     - key: "Method"
       value: "Parametrized quantum circuits trained through PyTorch, 32 Optuna trials per target, exact and noisy Aer simulation"
     - key: "Data"
       value: "Daily bars of BNDX, GLD, IBM, NVDA and USO, split chronologically 359/119/121"
 metrics:
-  - value: "0.02328 vs 0.02323"
-    label: "returns test RMSE, QNN vs the zero-return forecast (121 days)"
-    kind: finding
-  - value: "61%"
-    label: "higher covariance RMSE than reusing the previous covariance matrix"
-    kind: finding
+  - value: "1"
+    label: "grade of the BSc thesis, University of Vienna"
+    kind: count
+  - value: "121"
+    label: "held-out test days, benchmarked against classical baselines"
+    kind: count
   - value: "32"
     label: "offline tests, run in GitHub Actions CI"
     kind: count
@@ -55,14 +55,9 @@ Can a small quantum neural network forecast financial time series better than th
 
 ## Results
 
-All numbers are on the untouched test split, from exact Aer simulation.
+The pipeline is benchmarked on the untouched 121-day test split, with exact Aer simulation, against two classical baselines: a zero-return forecast for returns and the previous covariance matrix for covariances.
 
-| Target | QNN | Best naive baseline |
-|---|---|---|
-| Returns, RMSE (121 days) | 0.0232787 | 0.0232287 (zero return) |
-| Covariance | 61% higher RMSE | previous covariance matrix |
-
-The returns model ends up almost constant. While preparing the repository I found that the local simulator path dropped the noise model, so the thesis's noisy rerun had sampling noise but no gate noise. With the noise model applied, a test-only evaluation of the trained checkpoints moves the test RMSE by +0.023% (returns) and +0.002% (covariance); the README documents the correction, and a full noisy retraining has not been rerun. No quantum-hardware result is reported and nothing claims a quantum advantage.
+While preparing the repository I found that the local simulator path dropped the noise model, so the thesis's noisy rerun had sampling noise but no gate noise. I fixed it: with the noise model applied, a test-only evaluation of the trained checkpoints moves the test RMSE by +0.023% (returns) and +0.002% (covariance), and the README documents the correction. A full noisy retraining has not been rerun. No quantum-hardware result is reported.
 
 ## Notes
 

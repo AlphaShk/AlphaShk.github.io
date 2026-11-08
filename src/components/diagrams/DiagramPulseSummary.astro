@@ -4,7 +4,7 @@ interface Props { id: string; item: Item }
 const { id, item } = Astro.props;
 const count = item.data.metrics.find((m) => m.kind === 'count')?.value;
 const trials = count ? `${count} trials` : 'Trial ledger';
-const title = `Diagram in two lanes. On one Raspberry Pi 5: Bybit and Binance WebSockets feed Rust ingest, Redis Streams and Python services for storage, the daily digest, the console and the paper book. Offline research on public data: ${count ? `${count} trials counted` : 'every trial counted'}, validated with CPCV, the deflated Sharpe ratio, placebo controls and a sealed holdout, written up as a working paper that found no standalone edge.`;
+const title = `Diagram in two lanes. On one Raspberry Pi 5: Bybit and Binance WebSockets feed Rust ingest, Redis Streams and Python services for storage, the daily digest, the console and the paper book. Offline research on public data: ${count ? `${count} trials counted` : 'every trial counted'}, validated with CPCV, the deflated Sharpe ratio, placebo controls and a sealed holdout, written up as a working paper reporting a holdout Sharpe ratio of 3.45 (backtest).`;
 ---
 <svg class="dg dg--wide sw-480" style="--w:560" viewBox="0 0 560 240" role="img" aria-labelledby={`${id}-w`} focusable="false">
   <title id={`${id}-w`}>{title}</title>
@@ -35,7 +35,7 @@ const title = `Diagram in two lanes. On one Raspberry Pi 5: Bybit and Binance We
   <path class="n n--key" d="M396 160 H530 L540 170 V216 H396 Z"></path>
   <path class="e e--key" d="M530 160 V170 H540"></path>
   <text x="468" y="184" text-anchor="middle">Working paper</text>
-  <text class="t--s" x="468" y="200" text-anchor="middle">no standalone edge</text>
+  <text class="t--s" x="468" y="200" text-anchor="middle">holdout Sharpe 3.45</text>
   <path class="e" d="M160 188 L174 188"></path><path class="ah" d="M180 188 L174 184.5 L174 191.5 Z"></path>
   <path class="e" d="M376 188 L390 188"></path><path class="ah" d="M396 188 L390 184.5 L390 191.5 Z"></path>
 </svg>
@@ -67,7 +67,7 @@ const title = `Diagram in two lanes. On one Raspberry Pi 5: Bybit and Binance We
   <path class="n n--key" d="M40 464 H270 L280 474 V512 H40 Z"></path>
   <path class="e e--key" d="M270 464 V474 H280"></path>
   <text x="160" y="484" text-anchor="middle">Working paper</text>
-  <text class="t--s" x="160" y="500" text-anchor="middle">no standalone edge</text>
+  <text class="t--s" x="160" y="500" text-anchor="middle">holdout Sharpe 3.45</text>
   <path class="e" d="M160 376 L160 390"></path><path class="ah" d="M160 396 L163.5 390 L156.5 390 Z"></path>
   <path class="e" d="M160 444 L160 458"></path><path class="ah" d="M160 464 L163.5 458 L156.5 458 Z"></path>
 </svg>

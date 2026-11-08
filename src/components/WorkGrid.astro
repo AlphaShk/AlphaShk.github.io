@@ -54,7 +54,7 @@ const short = (i: Item) => (i.data as { tagline?: string }).tagline || i.data.su
         <Fragment set:html={`<${headingLevel} class="card__title" id="smaller-title">Smaller projects</${headingLevel}>`} />
         <ul class="mini">
           {smaller.map((i) => (
-            <li>
+            <li data-tracks={i.tracks.join(' ')}>
               <span><a class="mini__name" href={i.href}>{i.shortTitle}</a> <span class="mini__desc">{short(i)}</span></span>
               <span class="mini__links">
                 {i.links.filter((l) => l.kind === 'demo' || l.kind === 'repo').map((l) => (
@@ -76,3 +76,20 @@ const short = (i: Item) => (i.data as { tagline?: string }).tagline || i.data.su
     )}
   </div>
 </div>
+<script is:inline>(function(){
+  document.querySelectorAll('.works').forEach(function(w){
+    var radios=w.querySelectorAll('.filter input[name="track"]'); if(!radios.length) return;
+    function apply(){
+      var t=(w.querySelector('.filter input:checked')||{}).value||'all', n=0;
+      w.querySelectorAll('.work-grid > .card').forEach(function(c){
+        var mini=c.querySelectorAll('.mini li[data-tracks]'), show;
+        if(mini.length){ var k=0; mini.forEach(function(li){ var ok=t==='all'||(' '+li.dataset.tracks+' ').indexOf(' '+t+' ')>=0; li.hidden=!ok; if(ok)k++; }); show=k>0; }
+        else if(c.classList.contains('card--all')) show=true;
+        else show=t==='all'||(' '+(c.dataset.tracks||'')+' ').indexOf(' '+t+' ')>=0;
+        c.hidden=!show;
+        var idx=c.querySelector('.card__idx'); if(show&&idx){ n++; idx.textContent=String(n).padStart(2,'0'); }
+      });
+    }
+    radios.forEach(function(r){ r.addEventListener('change',apply); }); apply();
+  });
+})();</script>

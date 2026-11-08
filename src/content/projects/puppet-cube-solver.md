@@ -8,7 +8,7 @@ period: "Aug 2026"
 role: "Solo: cube model, search and app"
 status: "Public repo · MIT"
 code: public
-tracks: [quant_dev]
+tracks: ["ai"]
 order: 26
 featured: false
 page: project

@@ -1,5 +1,4 @@
 ---
-import DiagramErsteTrustLayer from './diagrams/DiagramErsteTrustLayer.astro';
 import { getItem, profile } from '../lib/data';
 
 interface Props { full?: boolean; figure?: number | false; includeProjects?: boolean; idPrefix?: string }
@@ -45,12 +44,7 @@ const workSlugs = new Set((await Promise.all(groups.map((g) => (g.href ? getItem
             <ul class="tl__bullets">
               {(full ? r.bullets : r.bullets.slice(0, 2)).map((b) => <li>{b}</li>)}
             </ul>
-            {figure !== false && r.id === 'erste-software-engineer' && (
-              <figure class="fig tl__fig">
-                <div class="fig__canvas"><DiagramErsteTrustLayer id={`${idPrefix}-erste-dg`} item={ersteItem} /></div>
-                <figcaption><span class="fig__no">Fig. {figure}</span>The modernization pipeline my team runs, and its trust layer. Schematic.</figcaption>
-              </figure>
-            )}
+            
           </div>
         </div>
       ))}

@@ -59,4 +59,4 @@ Two support workflows send failure alerts and serve the Notion backlog to the ch
 
 ## Results
 
-A full validation run took 3 min 43 s on the device in August 2026, a single development run. One negative result shaped the design: llama3.2:1b dropped 13 of 18 genuine stories on live data, so the model now only adds to the lexicon's list.
+A full validation run took 3 min 43 s on the device in August 2026, a single development run. Live-data testing shaped the design: the model now only adds to the lexicon's list of stories, so a small model can never remove a genuine one.

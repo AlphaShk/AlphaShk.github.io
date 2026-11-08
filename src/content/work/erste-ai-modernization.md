@@ -33,8 +33,8 @@ links: []
 hero: /assets/erste-ai-modernization/pipeline.svg
 visuals:
   - src: /assets/erste-ai-modernization/pipeline.svg
-    alt: "Schematic of the pipeline. Five steps run left to right: call-chain mapping (which programs call which), source ingestion (load the Natural/Adabas source), AI analysis (screens and business rules, written up as as-is documentation), generation (Java/OSB integration connectors) and a pull request with complete, usable code for human review. The documentation, the code and the pull request all pass through a trust layer of static analysis, generated tests, code-vs-documentation consistency checks and mandatory human review, and only then merge. A note below gives typical use-case cycle time: more than three monthly release cycles before, under one work week after (n = 5, as of August 2026)."
-    caption: The pipeline and the trust layer around its output. Schematic; Erste's code, documents and internal tool names stay private.
+    alt: "Schematic of the pipeline in four steps: legacy mainframe code, AI-assisted analysis, quality checks with human review, and documentation plus modern integration code delivered as pull requests."
+    caption: The modernization pipeline at a high level. Schematic.
 ai_note: ""
 ---
 
@@ -48,15 +48,9 @@ I lead an internal AI accelerator team at Erste Digital, Erste Group's technolog
 
 ## How it works
 
-![Pipeline and trust layer](/assets/erste-ai-modernization/pipeline.svg)
+![Modernization pipeline](/assets/erste-ai-modernization/pipeline.svg)
 
-1. **Call-chain mapping:** trace which legacy programs call which.
-2. **Source ingestion:** load the Natural/Adabas source.
-3. **Analysis:** agents examine screens, business rules and implementation details and write the as-is documentation.
-4. **Generation:** produce the Java/OSB integration connectors.
-5. **Pull request:** hand the code to a human reviewer.
-
-Around the generated code sits a trust layer: static analysis, generated tests, code-vs-documentation consistency checks and mandatory human review. Nothing merges on the model's word.
+AI agents read the legacy Natural/Adabas code, explain what it does and draft the documentation and the modern Java/OSB integration code. Automated checks and a human reviewer sit between every generated change and the main branch, so nothing merges on the model's word.
 
 ## Results
 
@@ -64,8 +58,6 @@ As of August 2026 (my own figures):
 
 - **5 complete use cases and 10+ connectors** delivered with the pipeline.
 - **Typical use-case cycle time down by over 80%:** from more than three monthly release cycles to under one work week and a single release (n = 5).
-
-That is cycle time, not effort, and five use cases is a small sample.
 
 ## What I learned
 

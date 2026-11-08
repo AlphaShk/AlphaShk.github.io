@@ -1,9 +1,9 @@
 {
   "assets": {
     "/assets/erste-ai-modernization/pipeline.svg": {
-      "bytes": 5653,
+      "bytes": 1865,
       "width": 960,
-      "height": 440
+      "height": 220
     },
     "/assets/imc-prosperity-4/fill-model-check.svg": {
       "bytes": 9851,
@@ -64,31 +64,6 @@
       "bytes": 6414,
       "width": 960,
       "height": 520
-    },
-    "/assets/pulse/gross-vs-cost.svg": {
-      "bytes": 12292,
-      "width": 576,
-      "height": 367
-    },
-    "/assets/pulse/luck-penalty.svg": {
-      "bytes": 8224,
-      "width": 576,
-      "height": 245
-    },
-    "/assets/pulse/survivor-by-year.svg": {
-      "bytes": 9078,
-      "width": 576,
-      "height": 259
-    },
-    "/assets/pulse/trials-by-category.svg": {
-      "bytes": 16077,
-      "width": 576,
-      "height": 360
-    },
-    "/assets/wutis/crnn-backtest.svg": {
-      "bytes": 57726,
-      "width": 576,
-      "height": 353
     },
     "/assets/wutis/timeline.svg": {
       "bytes": 6527,

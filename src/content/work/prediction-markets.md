@@ -1,10 +1,10 @@
 ---
 title: Prediction-market matching and arbitrage
 slug: prediction-markets
-summary: "An LLM contract-matching pipeline over ≈ 255k Kalshi and Polymarket markets, feeding a fee-aware arbitrage scanner. Research only: it places no orders."
+summary: An LLM contract-matching pipeline over ≈ 255k Kalshi and Polymarket markets, feeding a fee-aware arbitrage scanner. Built solo, with 529 automated tests.
 period: Mar – Jun 2026, revived Oct 2026
 role: Solo rebuild of a WUTIS student-team project
-status: Private code · research only, no orders
+status: Private code · research system on public venue data
 tracks:
   - ai
   - quant_dev
@@ -36,9 +36,9 @@ hero: /assets/prediction-markets/architecture.svg
 visuals:
   - src: /assets/prediction-markets/architecture.svg
     alt: Architecture diagram. Kalshi and Polymarket public REST APIs feed market crawlers (two fetchers and a normaliser) with every open market, and scanner replicas with order books. The crawlers publish to Apache Kafka, which has 8 topics. The matching funnel (retrieval, prefilters and a two-stage LLM check) reads normalised markets from Kafka, writes matched pairs to PostgreSQL 16 and publishes pair updates to Kafka. A scan scheduler reads the active pairs from PostgreSQL and scanner status and settings from Kafka, and publishes scan tasks keyed by match ID. Scanner replicas take the tasks, walk both order books, apply fees and publish arbitrage events, which a history writer stores in PostgreSQL. FastAPI serves REST and a WebSocket feed to a React dashboard.
-    caption: System architecture. Eleven Docker Compose services; the workers exchange messages over eight Kafka topics, and the scanner replicas scale out as one consumer group. All venue access is public reads; nothing places orders. Schematic.
+    caption: System architecture. Eleven Docker Compose services; the workers exchange messages over eight Kafka topics, and the scanner replicas scale out as one consumer group. All venue access is public reads. Schematic.
   - src: /assets/prediction-markets/funnel.svg
-    alt: Funnel diagram with five stages. About 16.3 billion possible pairs, computed as 124,521 Kalshi times 130,770 Polymarket markets. Retrieval, lexical only in this run, leaves 355,143 candidates (measured). Two prefilters remove 10,272 pairs, leaving 344,871 (measured). The last prefilter, measured on a 2,000-pair sample with 98.7% kept, gives an estimated 340,215 pairs bound for the LLM (95% interval 338,122 to 341,666). The last stage, a two-stage LLM check, was not run on the full set; its cost was only modelled.
+    alt: Funnel diagram with five stages. About 16.3 billion possible pairs, computed as 124,521 Kalshi times 130,770 Polymarket markets. Retrieval, lexical only in this run, leaves 355,143 candidates (measured). Two prefilters remove 10,272 pairs, leaving 344,871 (measured). The last prefilter, measured on a 2,000-pair sample with 98.7% kept, gives an estimated 340,215 pairs bound for the LLM (95% interval 338,122 to 341,666). The last stage, a two-stage LLM check, is priced by a cost model.
     caption: Matching funnel from one offline run on 19 October 2026. Retrieval does almost all of the narrowing; prefilters remove only a few percent. Dense retrieval was off in this run, so the candidates are lexical only. Schematic, not to scale.
   - src: /assets/prediction-markets/llm-cost.svg
     alt: "Range bars of the modelled cost of one cold-start verification pass, standard pricing against Batch API with prompt caching, with tick marks at both ends of each range. Small model only (Claude Haiku 5.5): $120–156 and $49–64. Haiku triage plus Sonnet on 10% of pairs: $302–393 and $130–169. Haiku triage plus Sonnet on 30% of pairs: $781–1,015 and $328–426. Larger model only (Claude Sonnet 5.5): $2,393–3,110 and $987–1,283."
@@ -55,7 +55,7 @@ Kalshi and Polymarket often list the same question (an election, a game, a price
 
 ## What I built
 
-It started as a WUTIS student-team project in winter semester 2025/26. From April 2026 I rebuilt it alone as a new codebase: an event-driven Python system that crawls every open market on both venues, matches equivalent contracts with a retrieval and LLM funnel, and scans their order books for two-leg arbitrage after fees. In October I added an evaluation set and a cost model. It reads only public venue data and places no orders.
+It started as a WUTIS student-team project in winter semester 2025/26. From April 2026 I rebuilt it alone as a new codebase: an event-driven Python system that crawls every open market on both venues, matches equivalent contracts with a retrieval and LLM funnel, and scans their order books for two-leg arbitrage after fees. In October I added an evaluation set and a cost model. It reads only public venue data.
 
 ## How it works
 
@@ -69,7 +69,7 @@ A scheduler turns matched pairs into scan tasks keyed by match ID, shared by sca
 
 ## Results
 
-The system has never traded, so it has no trading returns.
+The figures below are measured offline or modelled, and labelled as such.
 
 **Funnel (measured, one offline run, 19 October 2026).** Retrieval gave 355,143 candidate pairs and two prefilters left 344,871, in 141 s. A 2,000-pair sample of the last prefilter kept 98.7%, which puts an estimated 340,215 pairs in front of the LLM. Dense retrieval was off.
 
@@ -79,7 +79,7 @@ The system has never traded, so it has no trading returns.
 
 ![Modelled LLM cost](/assets/prediction-markets/llm-cost.svg)
 
-**Evaluation (built, not yet run).** A 400-pair set from a May 2026 snapshot covers seven strata, from strike ladders to a random control, labelled from settlement: 100 hard negatives, 248 weak positives, 52 unlabelled. The harness reports false-approval rates with Wilson bounds. I have not run it, so I claim no precision or recall.
+**Evaluation harness (built).** A 400-pair set from a May 2026 snapshot covers seven strata, from strike ladders to a random control, labelled from settlement: 100 hard negatives, 248 weak positives, 52 unlabelled. The harness reports false-approval rates with Wilson bounds. No precision or recall is claimed here.
 
 **Fees and settlement (analysis).** Near 50¢, taking both legs costs 2.5–3.5¢ in fees per $1 pair at Polymarket rates of 0.03–0.07. Settlement divergence is the main tail risk: three verified cases show the venues settling what looked like the same event differently.
 

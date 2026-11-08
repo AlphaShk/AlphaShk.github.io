@@ -496,9 +496,7 @@ a .icon--ext { margin-left: 4px; color: var(--ink-3); }
 .works:has(#f-ai:checked) .filter__status .s-ai,
 .works:has(#f-quant_dev:checked) .filter__status .s-quant_dev,
 .works:has(#f-quant_research:checked) .filter__status .s-quant_research { display: inline; }
-.works:has(#f-ai:checked) .card:not([data-tracks~="ai"]),
-.works:has(#f-quant_dev:checked) .card:not([data-tracks~="quant_dev"]),
-.works:has(#f-quant_research:checked) .card:not([data-tracks~="quant_research"]) { display: none; }
+.work-grid > .card[hidden], .mini li[hidden] { display: none; }
 @supports not selector(:has(a)) { .filter, .filter__status { display: none; } }
 
 /* ---- Work cards -------------------------------------------------------------- */

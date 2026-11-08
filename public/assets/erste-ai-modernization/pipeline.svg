@@ -1,63 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-labelledby="erste-pipe-title erste-pipe-desc" font-family="Inter, system-ui, sans-serif">
-  <title id="erste-pipe-title">AI modernization pipeline and its trust layer</title>
-  <desc id="erste-pipe-desc">Five steps from left to right. Call-chain mapping traces which legacy programs call which. Source ingestion loads the Natural/Adabas source. AI analysis examines screens and business rules and writes the as-is documentation. Generation produces the Java/OSB integration connectors. A pull request hands complete, usable code to a human reviewer. The documentation, the generated code and the pull request all pass through a trust layer of static analysis, generated tests, code-versus-documentation consistency checks and mandatory human review; only then are the documentation, the connectors and the reviewed pull request merged. Typical use-case cycle time fell from more than three monthly release cycles to under one work week (n = 5, as of August 2026). Schematic.</desc>
-  <defs>
-    <marker id="erste-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
-    </marker>
-  </defs>
-
-  <rect x="0" y="0" width="960" height="440" fill="#ffffff"/>
-
-  <text x="12" y="26" font-size="12" fill="#64748b">Legacy Natural/Adabas code in, review-ready Java/OSB integration code out (schematic)</text>
-
-  <!-- Row 1: the five pipeline steps -->
-  <rect x="12" y="44" width="168" height="92" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="96" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Call-chain mapping</text>
-  <text x="96" y="100" text-anchor="middle" font-size="12" fill="#64748b">which programs</text>
-  <text x="96" y="116" text-anchor="middle" font-size="12" fill="#64748b">call which</text>
-
-  <rect x="204" y="44" width="168" height="92" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="288" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Source ingestion</text>
-  <text x="288" y="100" text-anchor="middle" font-size="12" fill="#64748b">load the</text>
-  <text x="288" y="116" text-anchor="middle" font-size="12" fill="#64748b">Natural/Adabas source</text>
-
-  <rect x="396" y="44" width="168" height="92" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="480" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">AI analysis</text>
-  <text x="480" y="100" text-anchor="middle" font-size="12" fill="#64748b">screens, business rules</text>
-  <text x="480" y="116" text-anchor="middle" font-size="12" fill="#64748b">→ as-is documentation</text>
-
-  <rect x="588" y="44" width="168" height="92" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="672" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Generation</text>
-  <text x="672" y="100" text-anchor="middle" font-size="12" fill="#64748b">Java/OSB integration</text>
-  <text x="672" y="116" text-anchor="middle" font-size="12" fill="#64748b">connectors</text>
-
-  <rect x="780" y="44" width="168" height="92" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="864" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Pull request</text>
-  <text x="864" y="100" text-anchor="middle" font-size="12" fill="#64748b">complete, usable code</text>
-  <text x="864" y="116" text-anchor="middle" font-size="12" fill="#64748b">for human review</text>
-
-  <line x1="182" y1="90" x2="202" y2="90" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-  <line x1="374" y1="90" x2="394" y2="90" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-  <line x1="566" y1="90" x2="586" y2="90" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-  <line x1="758" y1="90" x2="778" y2="90" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-
-  <!-- Documentation, code and PR all enter the trust layer -->
-  <line x1="480" y1="138" x2="480" y2="184" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-  <line x1="672" y1="138" x2="672" y2="184" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-  <line x1="864" y1="138" x2="864" y2="184" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-
-  <!-- Row 2: trust layer -->
-  <rect x="12" y="188" width="936" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="480" y="220" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Trust layer</text>
-  <text x="480" y="246" text-anchor="middle" font-size="12" fill="#64748b">static analysis · generated tests · code-vs-documentation consistency checks · mandatory human review</text>
-
-  <line x1="480" y1="270" x2="480" y2="316" stroke="#2563eb" stroke-width="2" marker-end="url(#erste-arrow)"/>
-
-  <!-- Row 3: what merges -->
-  <rect x="190" y="320" width="580" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
-  <text x="480" y="350" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Merged only after review</text>
-  <text x="480" y="374" text-anchor="middle" font-size="12" fill="#64748b">as-is documentation · Java/OSB connectors · reviewed pull request</text>
-
-  <text x="480" y="424" text-anchor="middle" font-size="12" fill="#64748b">Typical use-case cycle time: more than three monthly release cycles → under one work week (n = 5, as of Aug 2026)</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" width="960" height="220" role="img" aria-labelledby="erste-pipe-title erste-pipe-desc" font-family="Inter, system-ui, sans-serif">
+  <title id="erste-pipe-title">AI-assisted modernization pipeline</title>
+  <desc id="erste-pipe-desc">Four steps from left to right: legacy code, AI-assisted analysis, automated quality checks with human review, and the outputs: documentation and modern integration code delivered as pull requests.</desc>
+  <rect width="960" height="220" fill="#ffffff"/>
+  <g stroke="#1f2937" stroke-width="1.5" fill="#f8fafc">
+    <rect x="16" y="70" width="190" height="80" rx="8"/>
+    <rect x="262" y="70" width="190" height="80" rx="8"/>
+    <rect x="508" y="70" width="190" height="80" rx="8"/>
+    <rect x="754" y="70" width="190" height="80" rx="8" stroke="#2563eb"/>
+  </g>
+  <g font-size="14" fill="#1f2937" text-anchor="middle">
+    <text x="111" y="106">Legacy mainframe code</text>
+    <text x="357" y="106">AI-assisted analysis</text>
+    <text x="603" y="106">Quality checks</text>
+    <text x="849" y="106">Docs + modern code</text>
+  </g>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="111" y="126">Natural/Adabas</text>
+    <text x="357" y="126">agents map and explain it</text>
+    <text x="603" y="126">tests, checks, human review</text>
+    <text x="849" y="126">Java/OSB, as pull requests</text>
+  </g>
+  <g stroke="#2563eb" stroke-width="1.5" fill="#2563eb">
+    <path d="M206 110 H254" fill="none"/><path d="M262 110 l-9 -5 v10 z"/>
+    <path d="M452 110 H500" fill="none"/><path d="M508 110 l-9 -5 v10 z"/>
+    <path d="M698 110 H746" fill="none"/><path d="M754 110 l-9 -5 v10 z"/>
+  </g>
+  <text x="480" y="190" font-size="12" fill="#2563eb" text-anchor="middle">typical use-case cycle time: months → under one work week</text>
 </svg>
