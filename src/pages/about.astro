@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Contact from '../components/Contact.astro';
+import { aiParagraphs, getItem, profile } from '../lib/data';
+
+const { about, ai } = aiParagraphs();
+const pulse = await getItem('pulse');
+const credentials = profile.credentials as { id: string; title: string; year: string; detail: string }[];
+---
+<Base title="About · Denys Shkola" description={about[0]} section="about" compactFooter={false}>
+  <section class="section page-head" aria-labelledby="about-title">
+    <div class="wrap">
+      <SectionHead kicker="About" title="About" id="about-title" level="h1" />
+      <div class="prose-block">
+        {about.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  {ai && (
+    <section class="section" aria-labelledby="build-title">
+      <div class="wrap">
+        <SectionHead kicker="§ 1" title="How I build" id="build-title" />
+        <div class="note note--lg">
+          <span class="label">AI assistance</span>
+          <p>{ai}</p>
+          {pulse && <p class="tl__link"><a class="arrow-link" href={pulse.href}>“How it was built” on the Pulse case study<span class="icon icon--arrow" aria-hidden="true"></span></a></p>}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section" aria-labelledby="lang-title">
+    <div class="wrap">
+      <SectionHead kicker={ai ? '§ 2' : '§ 1'} title="Languages and credentials" id="lang-title" />
+      <div class="split">
+        <div>
+          <h3 class="sub-title">Languages</h3>
+          <dl class="langs">
+            {profile.languages.map((l) => <div><dt class="label">{l.name}</dt><dd>{l.level}</dd></div>)}
+          </dl>
+        </div>
+        <div>
+          <h3 class="sub-title">Credentials</h3>
+          <table class="tbl tbl--keyed">
+            <caption class="vh">Credentials</caption>
+            <thead><tr><th class="label" scope="col">Year</th><th class="label" scope="col">Credential</th></tr></thead>
+            <tbody>
+              {credentials.map((c) => <tr><td class="tbl__k">{c.year}</td><td><span class="tbl__t">{c.title}</span><span class="tbl__d">{c.detail}</span></td></tr>)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Contact kicker={ai ? '§ 3' : '§ 2'} />
+</Base>

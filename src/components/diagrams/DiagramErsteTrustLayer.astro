@@ -1,0 +1,93 @@
+---
+import type { Item } from '../../lib/data';
+interface Props { id: string; item?: Item }
+const { id, item } = Astro.props;
+const label = item?.data.metrics.find((m) => /cycle time/i.test(m.label))?.label || '';
+const n = (label.match(/n = (\d+)/) || [])[1];
+const dimWide = `typical use-case cycle time: months → under one work week${n ? ` (n = ${n})` : ''}`;
+const dimTall = `cycle time: months → under a week${n ? ` (n = ${n})` : ''}`;
+const plateW = Math.round(dimWide.length * 6.7 + 16);
+const plateT = Math.round(dimTall.length * 6.7 + 16);
+const title = `Diagram: legacy Natural/Adabas code goes through call-chain mapping and source ingestion, then AI analysis, then a trust layer of static analysis, generated tests, code-versus-documentation checks and human review, producing as-is documentation, Java/OSB integration code and pull requests for review. ${label ? `Dimension: ${dimWide}.` : ''}`;
+---
+<svg class="dg dg--wide sw-560" style="--w:640" viewBox="0 0 640 240" role="img" aria-labelledby={`${id}-w`} focusable="false">
+  <title id={`${id}-w`}>{title}</title>
+  <rect class="n" x="8" y="80" width="104" height="56" rx="2"></rect>
+  <text x="60" y="104" text-anchor="middle">Natural/</text>
+  <text x="60" y="120" text-anchor="middle">Adabas</text>
+  <rect class="n" x="128" y="80" width="112" height="56" rx="2"></rect>
+  <text x="184" y="104" text-anchor="middle">Call-chain map</text>
+  <text class="t--s" x="184" y="120" text-anchor="middle">+ ingestion</text>
+  <rect class="n" x="256" y="80" width="96" height="56" rx="2"></rect>
+  <text x="304" y="104" text-anchor="middle">AI analysis</text>
+  <text class="t--s" x="304" y="120" text-anchor="middle">agents</text>
+  <rect class="b" x="368" y="16" width="136" height="188" rx="4"></rect>
+  <text class="t--cap" x="376" y="34">TRUST LAYER</text>
+  <rect class="n" x="376" y="44" width="120" height="32" rx="2"></rect>
+  <text x="436" y="64" text-anchor="middle">Static analysis</text>
+  <rect class="n" x="376" y="84" width="120" height="32" rx="2"></rect>
+  <text x="436" y="104" text-anchor="middle">Generated tests</text>
+  <rect class="n" x="376" y="124" width="120" height="32" rx="2"></rect>
+  <text x="436" y="144" text-anchor="middle">Code-vs-docs</text>
+  <rect class="n" x="376" y="164" width="120" height="32" rx="2"></rect>
+  <text x="436" y="184" text-anchor="middle">Human review</text>
+  <rect class="n n--key" x="520" y="36" width="112" height="40" rx="2"></rect>
+  <text x="576" y="60" text-anchor="middle">As-is docs</text>
+  <rect class="n n--key" x="520" y="92" width="112" height="40" rx="2"></rect>
+  <text x="576" y="116" text-anchor="middle">Java/OSB code</text>
+  <rect class="n n--key" x="520" y="148" width="112" height="40" rx="2"></rect>
+  <text x="576" y="172" text-anchor="middle">PRs for review</text>
+  <path class="e" d="M112 108 L122 108"></path><path class="ah" d="M128 108 L122 104.5 L122 111.5 Z"></path>
+  <path class="e" d="M240 108 L250 108"></path><path class="ah" d="M256 108 L250 104.5 L250 111.5 Z"></path>
+  <path class="e" d="M352 108 L362 108"></path><path class="ah" d="M368 108 L362 104.5 L362 111.5 Z"></path>
+  <path class="e" d="M504 112 L514 112"></path><path class="ah" d="M520 112 L514 108.5 L514 115.5 Z"></path>
+  <path class="e" d="M510 112 L510 56 L514 56"></path><path class="ah" d="M520 56 L514 52.5 L514 59.5 Z"></path>
+  <path class="e" d="M510 112 L510 168 L514 168"></path><path class="ah" d="M520 168 L514 164.5 L514 171.5 Z"></path>
+  {label && (
+    <Fragment>
+      <path class="e e--dim" d="M8 218 V230 M632 218 V230 M8 224 H632"></path>
+      <rect class="n--plate" x={320 - plateW / 2} y="216" width={plateW} height="16"></rect>
+      <text class="t--s t--accent" x="320" y="228" text-anchor="middle">{dimWide}</text>
+    </Fragment>
+  )}
+</svg>
+<svg class="dg dg--tall sw-560" style="--w:320" viewBox="0 0 320 472" role="img" aria-labelledby={`${id}-t`} focusable="false">
+  <title id={`${id}-t`}>{title}</title>
+  <rect class="n" x="60" y="16" width="200" height="44" rx="2"></rect>
+  <text x="160" y="35" text-anchor="middle">Natural/Adabas</text>
+  <text class="t--s" x="160" y="51" text-anchor="middle">legacy code</text>
+  <rect class="n" x="60" y="76" width="200" height="44" rx="2"></rect>
+  <text x="160" y="95" text-anchor="middle">Call-chain mapping</text>
+  <text class="t--s" x="160" y="111" text-anchor="middle">+ source ingestion</text>
+  <rect class="n" x="60" y="136" width="200" height="36" rx="2"></rect>
+  <text x="160" y="158" text-anchor="middle">AI analysis</text>
+  <rect class="b" x="40" y="188" width="240" height="176" rx="4"></rect>
+  <text class="t--cap" x="52" y="206">TRUST LAYER</text>
+  <rect class="n" x="60" y="214" width="200" height="28" rx="2"></rect>
+  <text x="160" y="232" text-anchor="middle">Static analysis</text>
+  <rect class="n" x="60" y="250" width="200" height="28" rx="2"></rect>
+  <text x="160" y="268" text-anchor="middle">Generated tests</text>
+  <rect class="n" x="60" y="286" width="200" height="28" rx="2"></rect>
+  <text x="160" y="304" text-anchor="middle">Code-vs-docs checks</text>
+  <rect class="n" x="60" y="322" width="200" height="28" rx="2"></rect>
+  <text x="160" y="340" text-anchor="middle">Human review</text>
+  <rect class="n n--key" x="8" y="388" width="96" height="40" rx="2"></rect>
+  <text x="56" y="412" text-anchor="middle">As-is docs</text>
+  <rect class="n n--key" x="112" y="388" width="96" height="40" rx="2"></rect>
+  <text x="160" y="412" text-anchor="middle">Java/OSB</text>
+  <rect class="n n--key" x="216" y="388" width="96" height="40" rx="2"></rect>
+  <text x="264" y="412" text-anchor="middle">Review PRs</text>
+  <path class="e" d="M160 60 L160 70"></path><path class="ah" d="M160 76 L163.5 70 L156.5 70 Z"></path>
+  <path class="e" d="M160 120 L160 130"></path><path class="ah" d="M160 136 L163.5 130 L156.5 130 Z"></path>
+  <path class="e" d="M160 172 L160 182"></path><path class="ah" d="M160 188 L163.5 182 L156.5 182 Z"></path>
+  <path class="e" d="M160 364 L160 382"></path><path class="ah" d="M160 388 L163.5 382 L156.5 382 Z"></path>
+  <path class="e" d="M160 374 L56 374 L56 382"></path><path class="ah" d="M56 388 L59.5 382 L52.5 382 Z"></path>
+  <path class="e" d="M160 374 L264 374 L264 382"></path><path class="ah" d="M264 388 L267.5 382 L260.5 382 Z"></path>
+  {label && (
+    <Fragment>
+      <path class="e e--dim" d="M8 446 V458 M312 446 V458 M8 452 H312"></path>
+      <rect class="n--plate" x={160 - plateT / 2} y="444" width={plateT} height="16"></rect>
+      <text class="t--s t--accent" x="160" y="456" text-anchor="middle">{dimTall}</text>
+    </Fragment>
+  )}
+</svg>

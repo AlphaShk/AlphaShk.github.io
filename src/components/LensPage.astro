@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import SectionHead from './SectionHead.astro';
+import WorkGrid from './WorkGrid.astro';
+import Timeline from './Timeline.astro';
+import EduAwards from './EduAwards.astro';
+import Skills from './Skills.astro';
+import Contact from './Contact.astro';
+import { getItems, profile } from '../lib/data';
+import { lenses } from '../site.config';
+
+interface Props { lens: 'ai' | 'quant'; title: string; features: string[] }
+const { lens, title, features } = Astro.props;
+const conf = lenses[lens];
+const other = lens === 'ai' ? lenses.quant : lenses.ai;
+const all = await getItems();
+const items = conf.work.map((s) => all.find((i) => i.slug === s)).filter(Boolean) as typeof all;
+const withAll = (features.length * 3 + (items.length - features.length) * 2) % 6 !== 0;
+const figNo = features.length + 1;
+---
+<Base title={title} description={profile.bios[conf.bio]} lens={lens} compactFooter={false}>
+  <div class="wrap">
+    <p class="lens-bar">
+      <span class="label">View · {conf.label}</span>
+      <a class="arrow-link" href="/">Full portfolio<span class="icon icon--arrow" aria-hidden="true"></span></a>
+      <a href={other.path}>{other.label} view</a>
+    </p>
+  </div>
+  <Hero lens={lens} />
+
+  <section class="section" id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 1" title="Selected work" id="work-title">
+        <ul slot="aside" class="legend" aria-label="Status key">
+          <li class="st st--public">public, opens</li>
+          <li class="st st--private">private code</li>
+          <li class="st st--competition">competition</li>
+        </ul>
+      </SectionHead>
+      <WorkGrid items={items} features={features} allCount={withAll ? all.length : undefined} compact />
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="xp-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 2" title="Experience" id="xp-title" />
+      <Timeline figure={lens === 'ai' ? figNo : false} idPrefix={lens} />
+      <p class="sec-foot"><a class="arrow-link" href="/cv/">Full CV<span class="icon icon--arrow" aria-hidden="true"></span></a></p>
+    </div>
+  </section>
+
+  <section class="section" id="education" aria-labelledby="edu-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 3" title="Education & awards" id="edu-title" />
+      <EduAwards awards={conf.homeAwards} />
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 4" title="Skills" id="skills-title" />
+      <Skills groups={conf.skills} />
+    </div>
+  </section>
+
+  <Contact kicker="§ 5" />
+</Base>

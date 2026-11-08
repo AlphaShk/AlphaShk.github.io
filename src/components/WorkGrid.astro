@@ -1,0 +1,78 @@
+---
+import WorkCard from './WorkCard.astro';
+import { trackLabel, type Item } from '../lib/data';
+import { trackOrder, type TrackKey } from '../site.config';
+
+interface Props {
+  items: Item[];
+  features?: string[];
+  smaller?: Item[];
+  allCount?: number;
+  filter?: boolean;
+  headingLevel?: 'h2' | 'h3';
+  compact?: boolean;
+}
+const { items, features = [], smaller = [], allCount, filter = false, headingLevel = 'h3', compact = false } = Astro.props;
+const featureItems = items.filter((i) => features.includes(i.slug)).slice(0, 2);
+const rest = items.filter((i) => !featureItems.includes(i));
+const allTracks = trackOrder.join(' ');
+const smallerTracks = [...new Set(smaller.flatMap((i) => i.tracks))].join(' ');
+const filterable = [...featureItems, ...rest, ...(smaller.length ? [{ tracks: smaller.flatMap((i) => i.tracks) }] : [])];
+const total = featureItems.length + rest.length + (smaller.length ? 1 : 0);
+const count = (t: TrackKey) => filterable.filter((i) => i.tracks.includes(t)).length;
+let n = 0;
+const next = () => ++n;
+const short = (i: Item) => (i.data as { tagline?: string }).tagline || i.data.summary;
+---
+<div class="works">
+  {filter && (
+    <div class="filter__bar">
+      <fieldset class="filter">
+        <legend class="vh">Show work for a target role</legend>
+        <input type="radio" name="track" id="f-all" value="all" checked />
+        <label for="f-all">All <span class="n">{total}</span></label>
+        {trackOrder.map((t) => (
+          <Fragment>
+            <input type="radio" name="track" id={`f-${t}`} value={t} />
+            <label for={`f-${t}`}>{trackLabel(t)} <span class="n">{count(t)}</span></label>
+          </Fragment>
+        ))}
+      </fieldset>
+      <p class="filter__status" role="status">
+        <span class="s-all">Showing {total} of {total}</span>
+        {trackOrder.map((t) => <span class={`s-${t}`}>Showing {count(t)} of {total}: {trackLabel(t)}</span>)}
+      </p>
+      <script is:inline>(function(){try{var t=new URLSearchParams(location.search).get("track"),e=t&&document.getElementById("f-"+t);if(e)e.checked=true;}catch(x){}})();</script>
+    </div>
+  )}
+  <div class="work-grid">
+    {featureItems.map((item, k) => <WorkCard item={item} index={next()} feature figNo={k + 1} headingLevel={headingLevel} />)}
+    {rest.map((item) => <WorkCard item={item} index={next()} headingLevel={headingLevel} compact={compact} />)}
+    {smaller.length > 0 && (
+      <article class="card" id="smaller-projects" data-tracks={smallerTracks} aria-labelledby="smaller-title">
+        <header class="card__head"><p class="card__meta"><span class="card__idx">{String(next()).padStart(2, '0')}</span>Public repos</p></header>
+        <Fragment set:html={`<${headingLevel} class="card__title" id="smaller-title">Smaller projects</${headingLevel}>`} />
+        <ul class="mini">
+          {smaller.map((i) => (
+            <li>
+              <span><a class="mini__name" href={i.href}>{i.shortTitle}</a> <span class="mini__desc">{short(i)}</span></span>
+              <span class="mini__links">
+                {i.links.filter((l) => l.kind === 'demo' || l.kind === 'repo').map((l) => (
+                  <a class="is-public" href={l.href}>{l.kind === 'demo' ? 'Live demo' : 'Repo'}<span class="icon icon--ext" aria-hidden="true"></span></a>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </article>
+    )}
+    {allCount && (
+      <article class="card card--all" data-tracks={allTracks} aria-labelledby="all-title">
+        <header class="card__head"><p class="card__meta">All work</p></header>
+        <Fragment set:html={`<${headingLevel} class="card__title" id="all-title"><a href="/work/">All ${allCount} projects</a></${headingLevel}>`} />
+        <p class="card__result">Every case study and project page, with a filter by target role.</p>
+        <p class="card__links"><a class="arrow-link" href="/work/">Browse all work<span class="icon icon--arrow" aria-hidden="true"></span></a></p>
+      </article>
+    )}
+  </div>
+</div>

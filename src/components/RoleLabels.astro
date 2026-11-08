@@ -1,0 +1,9 @@
+---
+import { tracks, trackOrder, type TrackKey } from '../site.config';
+
+interface Props { form?: 'long' | 'short'; only?: TrackKey[]; labelledby?: string }
+const { form = 'long', only = trackOrder, labelledby } = Astro.props;
+---
+<ul class="roles" aria-labelledby={labelledby}>
+  {only.map((t) => <li class="role">{tracks[t][form]}</li>)}
+</ul>

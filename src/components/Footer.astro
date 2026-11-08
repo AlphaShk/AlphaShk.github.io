@@ -1,0 +1,25 @@
+---
+import Email from './Email.astro';
+import { site } from '../site.config';
+import { profile } from '../lib/data';
+
+interface Props { compact?: boolean }
+const { compact = true } = Astro.props;
+---
+<footer class="site-footer">
+  <div class="wrap">
+    {compact && (
+      <p class="site-footer__contact" id="contact">
+        <Email variant="inline" />
+        <a href={profile.identity.linkedin}>LinkedIn<span class="icon icon--ext" aria-hidden="true"></span></a>
+        <a href={profile.identity.github}>GitHub<span class="icon icon--ext" aria-hidden="true"></span></a>
+        <a href={site.cvPdf}>CV (PDF)</a>
+      </p>
+    )}
+    <div class="site-footer__colophon">
+      <p>© {site.year} {profile.identity.name} · Last updated {site.updated}</p>
+      <p>Views: <a href="/">General</a> · <a href="/ai/">AI engineering</a> · <a href="/quant/">Quant</a></p>
+      <p>Set in Newsreader, Inter and JetBrains Mono. No trackers.</p>
+    </div>
+  </div>
+</footer>

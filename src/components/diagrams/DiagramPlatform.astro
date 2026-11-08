@@ -1,0 +1,67 @@
+---
+import type { Item } from '../../lib/data';
+interface Props { id: string; item: Item }
+const { id, item } = Astro.props;
+const mine = item.data.metrics.find((m) => /integrations/i.test(m.label))?.value;
+const sub = mine ? `${mine} by me` : 'integrations';
+const title = `Data-flow diagram. Exchange feeds enter Rust collectors${mine ? ` (${mine} exchange integrations implemented by me)` : ''}, which publish normalized events on NATS. Go services, a gateway and a market engine, consume them and use ClickHouse, PostgreSQL and Redis; a Node API, which is also the control plane, serves the React/TypeScript web clients.`;
+---
+<svg class="dg dg--wide sw-480" style="--w:560" viewBox="0 0 560 192" role="img" aria-labelledby={`${id}-w`} focusable="false">
+  <title id={`${id}-w`}>{title}</title>
+  <rect class="n" x="16" y="24" width="112" height="56" rx="2"></rect>
+  <text x="72" y="48" text-anchor="middle">Exchanges</text>
+  <text class="t--s" x="72" y="64" text-anchor="middle">venue feeds</text>
+  <rect class="n n--key" x="148" y="24" width="136" height="56" rx="2"></rect>
+  <text x="216" y="48" text-anchor="middle">Rust collectors</text>
+  <text class="t--s t--accent" x="216" y="64" text-anchor="middle">{sub}</text>
+  <rect class="n" x="304" y="24" width="80" height="56" rx="2"></rect>
+  <text x="344" y="48" text-anchor="middle">NATS</text>
+  <text class="t--s" x="344" y="64" text-anchor="middle">bus</text>
+  <rect class="n" x="404" y="24" width="140" height="56" rx="2"></rect>
+  <text x="474" y="48" text-anchor="middle">Go gateway</text>
+  <text class="t--s" x="474" y="64" text-anchor="middle">market engine</text>
+  <rect class="n" x="404" y="120" width="140" height="56" rx="2"></rect>
+  <text x="474" y="144" text-anchor="middle">ClickHouse</text>
+  <text class="t--s" x="474" y="160" text-anchor="middle">PostgreSQL · Redis</text>
+  <rect class="n" x="212" y="120" width="140" height="56" rx="2"></rect>
+  <text x="282" y="144" text-anchor="middle">Node API</text>
+  <text class="t--s" x="282" y="160" text-anchor="middle">control plane</text>
+  <rect class="n" x="16" y="120" width="140" height="56" rx="2"></rect>
+  <text x="86" y="144" text-anchor="middle">React / TS UI</text>
+  <text class="t--s" x="86" y="160" text-anchor="middle">web clients</text>
+  <path class="e" d="M128 52 L142 52"></path><path class="ah" d="M148 52 L142 48.5 L142 55.5 Z"></path>
+  <path class="e" d="M284 52 L298 52"></path><path class="ah" d="M304 52 L298 48.5 L298 55.5 Z"></path>
+  <path class="e" d="M384 52 L398 52"></path><path class="ah" d="M404 52 L398 48.5 L398 55.5 Z"></path>
+  <path class="e" d="M500 80 L500 114"></path><path class="ah" d="M500 120 L503.5 114 L496.5 114 Z"></path>
+  <path class="e" d="M440 80 L440 100 L282 100 L282 114"></path><path class="ah" d="M282 120 L285.5 114 L278.5 114 Z"></path>
+  <path class="e" d="M212 148 L162 148"></path><path class="ah" d="M156 148 L162 144.5 L162 151.5 Z"></path>
+</svg>
+<svg class="dg dg--tall sw-480" style="--w:320" viewBox="0 0 320 392" role="img" aria-labelledby={`${id}-t`} focusable="false">
+  <title id={`${id}-t`}>{title}</title>
+  <rect class="n" x="40" y="16" width="240" height="44" rx="2"></rect>
+  <text x="160" y="35" text-anchor="middle">Exchanges</text>
+  <text class="t--s" x="160" y="51" text-anchor="middle">venue feeds</text>
+  <rect class="n n--key" x="40" y="80" width="240" height="44" rx="2"></rect>
+  <text x="160" y="99" text-anchor="middle">Rust collectors</text>
+  <text class="t--s t--accent" x="160" y="115" text-anchor="middle">{sub}</text>
+  <rect class="n" x="40" y="144" width="240" height="44" rx="2"></rect>
+  <text x="160" y="170" text-anchor="middle">NATS bus</text>
+  <rect class="n" x="40" y="208" width="240" height="44" rx="2"></rect>
+  <text x="160" y="227" text-anchor="middle">Go gateway</text>
+  <text class="t--s" x="160" y="243" text-anchor="middle">market engine</text>
+  <rect class="n" x="16" y="272" width="136" height="44" rx="2"></rect>
+  <text x="84" y="291" text-anchor="middle">ClickHouse</text>
+  <text class="t--s" x="84" y="307" text-anchor="middle">PostgreSQL · Redis</text>
+  <rect class="n" x="168" y="272" width="136" height="44" rx="2"></rect>
+  <text x="236" y="291" text-anchor="middle">Node API</text>
+  <text class="t--s" x="236" y="307" text-anchor="middle">control plane</text>
+  <rect class="n" x="168" y="336" width="136" height="44" rx="2"></rect>
+  <text x="236" y="355" text-anchor="middle">React / TS UI</text>
+  <text class="t--s" x="236" y="371" text-anchor="middle">web clients</text>
+  <path class="e" d="M160 60 L160 74"></path><path class="ah" d="M160 80 L163.5 74 L156.5 74 Z"></path>
+  <path class="e" d="M160 124 L160 138"></path><path class="ah" d="M160 144 L163.5 138 L156.5 138 Z"></path>
+  <path class="e" d="M160 188 L160 202"></path><path class="ah" d="M160 208 L163.5 202 L156.5 202 Z"></path>
+  <path class="e" d="M160 252 L160 262 L84 262 L84 266"></path><path class="ah" d="M84 272 L87.5 266 L80.5 266 Z"></path>
+  <path class="e" d="M160 262 L236 262 L236 266"></path><path class="ah" d="M236 272 L239.5 266 L232.5 266 Z"></path>
+  <path class="e" d="M236 316 L236 330"></path><path class="ah" d="M236 336 L239.5 330 L232.5 330 Z"></path>
+</svg>

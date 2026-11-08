@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="960" height="520" role="img" aria-labelledby="pulse-arch-title pulse-arch-desc" font-family="Inter, system-ui, sans-serif">
+  <title id="pulse-arch-title">Pulse architecture on one Raspberry Pi 5</title>
+  <desc id="pulse-arch-desc">Bybit and Binance feeds, over WebSockets plus REST polling for Binance bars, funding and open interest, enter two Rust ingest daemons, which publish msgpack events to a Redis Streams bus with at-least-once delivery, SQLite outboxes and a dead-letter stream. A news service publishes headlines to the bus and a sentiment service scores them on the device with FinBERT and CryptoBERT models in INT8 ONNX. Python services consume the bus: storage writes Parquet bars, funding, liquidations and L2 order-book snapshots; a notifier sends one daily Telegram digest and failure pages; a password-protected FastAPI strategy console accepts only read-only exchange keys. A forward paper runner books the daily paper portfolios from public exchange REST data, and the digest and the console read its output. All of it is designed to run unattended on one Raspberry Pi 5 (16 GB) as systemd services and timers. The research program ran offline on public data and is not part of this diagram.</desc>
+  <defs>
+    <marker id="pulse-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="520" fill="#ffffff"/>
+
+  <!-- Row 1: producers -->
+  <rect x="24" y="40" width="208" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="128" y="66" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Exchange feeds</text>
+  <text x="128" y="86" text-anchor="middle" font-size="12" fill="#64748b">WebSockets + REST polling</text>
+  <text x="128" y="103" text-anchor="middle" font-size="12" fill="#64748b">Bybit · Binance perpetuals</text>
+
+  <line x1="232" y1="80" x2="286" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+
+  <rect x="288" y="40" width="208" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="392" y="74" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Rust ingest</text>
+  <text x="392" y="96" text-anchor="middle" font-size="12" fill="#64748b">2 daemons, sharded sockets</text>
+
+  <rect x="600" y="40" width="336" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="768" y="66" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">News + local sentiment</text>
+  <text x="768" y="86" text-anchor="middle" font-size="12" fill="#64748b">headlines scored on the device by</text>
+  <text x="768" y="103" text-anchor="middle" font-size="12" fill="#64748b">FinBERT / CryptoBERT (INT8 ONNX)</text>
+
+  <line x1="392" y1="120" x2="392" y2="166" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+  <line x1="768" y1="122" x2="768" y2="166" stroke="#2563eb" stroke-width="2" marker-start="url(#pulse-arrow)" marker-end="url(#pulse-arrow)"/>
+
+  <!-- Row 2: the bus -->
+  <rect x="24" y="168" width="912" height="64" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="195" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Redis Streams bus</text>
+  <text x="480" y="216" text-anchor="middle" font-size="12" fill="#64748b">msgpack events · at-least-once delivery · SQLite outboxes · dead-letter stream</text>
+
+  <line x1="168" y1="232" x2="168" y2="278" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+  <line x1="480" y1="232" x2="480" y2="278" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+  <line x1="792" y1="232" x2="792" y2="278" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+
+  <!-- Row 3: Python consumers -->
+  <rect x="24" y="280" width="288" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="168" y="306" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Storage</text>
+  <text x="168" y="326" text-anchor="middle" font-size="12" fill="#64748b">Parquet bars, funding, liquidations</text>
+  <text x="168" y="343" text-anchor="middle" font-size="12" fill="#64748b">+ L2 order-book snapshots</text>
+
+  <rect x="336" y="280" width="288" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="306" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Notifier</text>
+  <text x="480" y="326" text-anchor="middle" font-size="12" fill="#64748b">one daily Telegram digest</text>
+  <text x="480" y="343" text-anchor="middle" font-size="12" fill="#64748b">+ failure pages</text>
+
+  <rect x="648" y="280" width="288" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="792" y="306" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Strategy console</text>
+  <text x="792" y="326" text-anchor="middle" font-size="12" fill="#64748b">FastAPI, password-protected</text>
+  <text x="792" y="343" text-anchor="middle" font-size="12" fill="#64748b">read-only exchange keys only</text>
+
+  <!-- Row 4: forward paper runner -->
+  <line x1="480" y1="408" x2="480" y2="362" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+  <line x1="792" y1="408" x2="792" y2="362" stroke="#2563eb" stroke-width="2" marker-end="url(#pulse-arrow)"/>
+
+  <rect x="336" y="408" width="600" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="636" y="434" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Forward paper runner</text>
+  <text x="636" y="454" text-anchor="middle" font-size="12" fill="#64748b">books the daily paper portfolios from public exchange REST data;</text>
+  <text x="636" y="471" text-anchor="middle" font-size="12" fill="#64748b">the digest and the console read its output</text>
+
+  <text x="24" y="428" font-size="12" fill="#64748b">Rust ingest plus Python services</text>
+  <text x="24" y="445" font-size="12" fill="#64748b">(uv workspace), always-on systemd</text>
+  <text x="24" y="462" font-size="12" fill="#64748b">services and timers on one</text>
+  <text x="24" y="479" font-size="12" fill="#64748b">Raspberry Pi 5 (16 GB).</text>
+</svg>

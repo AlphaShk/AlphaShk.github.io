@@ -1,0 +1,11 @@
+---
+interface Props { kicker: string; title: string; id: string; level?: 'h1' | 'h2'; intro?: string }
+const { kicker, title, id, level = 'h2', intro } = Astro.props;
+const Tag = level;
+---
+<header class="sec-head">
+  <p class="sec-kicker">{kicker}</p>
+  <Tag class="sec-title" id={id}>{title}</Tag>
+  {Astro.slots.has('aside') && <div class="sec-aside"><slot name="aside" /></div>}
+  {intro && <p class="sec-intro">{intro}</p>}
+</header>

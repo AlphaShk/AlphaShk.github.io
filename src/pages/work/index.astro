@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import WorkGrid from '../../components/WorkGrid.astro';
+import { getItems } from '../../lib/data';
+
+const items = await getItems();
+const intro = 'Case studies of private work (results, architecture and what I learned, without code) and project pages for public repositories.';
+---
+<Base title="Work · Denys Shkola" description={`${items.length} projects: ${intro}`} section="work">
+  <section class="section page-head" aria-labelledby="work-title">
+    <div class="wrap">
+      <SectionHead kicker={`Work · ${items.length} projects`} title="Work" id="work-title" level="h1" intro={intro}>
+        <ul slot="aside" class="legend" aria-label="Status key">
+          <li class="st st--public">public, opens</li>
+          <li class="st st--private">private code</li>
+          <li class="st st--competition">competition</li>
+        </ul>
+      </SectionHead>
+      <WorkGrid items={items} features={['pulse', 'market-data-platform']} filter headingLevel="h2" />
+      <p class="disclaimer">Research only; not investment advice.</p>
+    </div>
+  </section>
+</Base>

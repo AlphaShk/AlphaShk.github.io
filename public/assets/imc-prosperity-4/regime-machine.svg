@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="imc-regime-title imc-regime-desc" font-family="Inter, system-ui, sans-serif">
+  <title id="imc-regime-title">PEPPER regime state machine</title>
+  <desc id="imc-regime-desc">Every tick, a detrended fair value and short-horizon book signals are turned into bearish and bullish evidence, which drives a four-state machine for the trending product. It starts in trend on, where it carries a near-full long. Bearish evidence that persists moves it to warning, which trims the long and bids less; confirmed bullish evidence moves warning back to trend on. Stronger bearish evidence that persists moves warning to break, which stops buying and goes flat or slightly short. Confirmed bullish evidence moves break to recovery, which rebuilds the long; a strong bearish signal sends recovery straight back to break, and confirmed bullish evidence returns it to trend on. The current state sets the target inventory band and how hard the engine bids and offers, which become the orders.</desc>
+  <defs>
+    <marker id="imc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="560" fill="#ffffff"/>
+
+  <!-- Inputs -->
+  <rect x="190" y="20" width="580" height="64" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="46" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Signals, every tick</text>
+  <text x="480" y="68" text-anchor="middle" font-size="12" fill="#64748b">detrended fair value and short-horizon book signals → bearish and bullish evidence</text>
+
+  <line x1="480" y1="84" x2="480" y2="124" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+
+  <!-- Machine boundary (grouping only, not a step) -->
+  <rect x="24" y="126" width="912" height="310" rx="8" fill="none" stroke="#64748b" stroke-width="1"/>
+  <text x="44" y="150" font-size="12" fill="#64748b">PEPPER regime machine: one state at a time</text>
+
+  <!-- Start marker -->
+  <text x="62" y="192" text-anchor="middle" font-size="12" fill="#64748b">start</text>
+  <circle cx="62" cy="204" r="5" fill="#1f2937"/>
+  <line x1="68" y1="204" x2="102" y2="204" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+
+  <!-- States -->
+  <rect x="104" y="168" width="280" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="244" y="198" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">trend on</text>
+  <text x="244" y="220" text-anchor="middle" font-size="12" fill="#64748b">carry a near-full long</text>
+
+  <rect x="576" y="168" width="280" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="716" y="198" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">warning</text>
+  <text x="716" y="220" text-anchor="middle" font-size="12" fill="#64748b">trim the long, bid less</text>
+
+  <rect x="576" y="340" width="280" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="716" y="370" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">break</text>
+  <text x="716" y="392" text-anchor="middle" font-size="12" fill="#64748b">stop buying, go flat or slightly short</text>
+
+  <rect x="104" y="340" width="280" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="244" y="370" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">recovery</text>
+  <text x="244" y="392" text-anchor="middle" font-size="12" fill="#64748b">rebuild the long</text>
+
+  <!-- trend on <-> warning -->
+  <line x1="386" y1="192" x2="572" y2="192" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+  <text x="480" y="183" text-anchor="middle" font-size="12" fill="#64748b">bearish evidence persists</text>
+  <line x1="574" y1="216" x2="388" y2="216" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+  <text x="480" y="234" text-anchor="middle" font-size="12" fill="#64748b">bullish evidence confirmed</text>
+
+  <!-- warning -> break -->
+  <line x1="716" y1="242" x2="716" y2="336" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+  <text x="730" y="284" font-size="12" fill="#64748b">stronger bearish</text>
+  <text x="730" y="300" font-size="12" fill="#64748b">evidence persists</text>
+
+  <!-- break <-> recovery -->
+  <line x1="574" y1="364" x2="388" y2="364" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+  <text x="480" y="355" text-anchor="middle" font-size="12" fill="#64748b">bullish evidence confirmed</text>
+  <line x1="386" y1="388" x2="572" y2="388" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+  <text x="480" y="406" text-anchor="middle" font-size="12" fill="#64748b">strong bearish signal</text>
+
+  <!-- recovery -> trend on -->
+  <line x1="244" y1="338" x2="244" y2="244" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+  <text x="230" y="284" text-anchor="end" font-size="12" fill="#64748b">bullish evidence</text>
+  <text x="230" y="300" text-anchor="end" font-size="12" fill="#64748b">confirmed</text>
+
+  <line x1="480" y1="436" x2="480" y2="474" stroke="#2563eb" stroke-width="2" marker-end="url(#imc-arrow)"/>
+
+  <!-- Output -->
+  <rect x="190" y="476" width="580" height="64" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="502" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Orders</text>
+  <text x="480" y="524" text-anchor="middle" font-size="12" fill="#64748b">the state sets the target inventory band and how hard to bid and offer</text>
+</svg>

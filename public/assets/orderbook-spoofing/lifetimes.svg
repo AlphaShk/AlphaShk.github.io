@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="576pt" height="259.2pt" viewBox="0 0 576 259.2" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img">
+ <title>Lifetimes of large bid-side placements</title>
+ <desc>Histogram of the lifetimes of 1,290 large bid-side placements from the 14-hour capture, in bins of about 0.6 seconds. 846 placements (66%) were gone within 0.7 seconds, 190 within 0.7 to 1.3 seconds and 71 within 1.3 to 1.9 seconds; the counts then fall below 40 per bin. 45 placements that lasted 6 to 18 seconds are not drawn.</desc>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 259.2 
+L 576 259.2 
+L 576 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 60.48 215.136 
+L 564.48 215.136 
+L 564.48 10.368 
+L 60.48 10.368 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="60.48" y="226.509594" transform="rotate(-0 60.48 226.509594)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="139.850079" y="226.509594" transform="rotate(-0 139.850079 226.509594)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="219.220157" y="226.509594" transform="rotate(-0 219.220157 226.509594)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="298.590236" y="226.509594" transform="rotate(-0 298.590236 226.509594)">3</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="377.960315" y="226.509594" transform="rotate(-0 377.960315 226.509594)">4</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="457.330394" y="226.509594" transform="rotate(-0 457.330394 226.509594)">5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="536.700472" y="226.509594" transform="rotate(-0 536.700472 226.509594)">6</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="fill: #1f2937; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="312.48" y="240.7035" transform="rotate(-0 312.48 240.7035)">Lifetime from placement to removal (s)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_8">
+      <path d="M 60.48 215.136 
+L 564.48 215.136 
+" clip-path="url(#p4945014576)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end" x="56.98" y="219.072797" transform="rotate(-0 56.98 219.072797)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_10">
+      <path d="M 60.48 170.621217 
+L 564.48 170.621217 
+" clip-path="url(#p4945014576)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11"/>
+     <g id="text_10">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end" x="56.98" y="174.558014" transform="rotate(-0 56.98 174.558014)">200</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_12">
+      <path d="M 60.48 126.106435 
+L 564.48 126.106435 
+" clip-path="url(#p4945014576)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13"/>
+     <g id="text_11">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end" x="56.98" y="130.043232" transform="rotate(-0 56.98 130.043232)">400</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <path d="M 60.48 81.591652 
+L 564.48 81.591652 
+" clip-path="url(#p4945014576)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15"/>
+     <g id="text_12">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end" x="56.98" y="85.528449" transform="rotate(-0 56.98 85.528449)">600</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_16">
+      <path d="M 60.48 37.07687 
+L 564.48 37.07687 
+" clip-path="url(#p4945014576)" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17"/>
+     <g id="text_13">
+      <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end" x="56.98" y="41.013666" transform="rotate(-0 56.98 41.013666)">800</text>
+     </g>
+    </g>
+    <g id="text_14">
+     <text style="fill: #1f2937; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle" x="32.31375" y="112.752" transform="rotate(-90 32.31375 112.752)">Large bid-side placements (count)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 60.48 215.136 
+L 564.48 215.136 
+" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 69.167008 215.136 
+L 69.167008 29.83847 
+Q 69.167008 26.83847 72.167008 26.83847 
+L 111.881622 26.83847 
+Q 114.881622 26.83847 114.881622 29.83847 
+L 114.881622 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 116.381622 215.136 
+L 116.381622 175.846957 
+Q 116.381622 172.846957 119.381622 172.846957 
+L 159.096236 172.846957 
+Q 162.096236 172.846957 162.096236 175.846957 
+L 162.096236 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 163.596236 215.136 
+L 163.596236 202.333252 
+Q 163.596236 199.333252 166.596236 199.333252 
+L 206.31085 199.333252 
+Q 209.31085 199.333252 209.31085 202.333252 
+L 209.31085 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 210.81085 215.136 
+L 210.81085 209.678191 
+Q 210.81085 206.678191 213.81085 206.678191 
+L 253.525465 206.678191 
+Q 256.525465 206.678191 256.525465 209.678191 
+L 256.525465 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 258.025465 215.136 
+L 258.025465 212.349078 
+Q 258.025465 209.349078 261.025465 209.349078 
+L 300.740079 209.349078 
+Q 303.740079 209.349078 303.740079 212.349078 
+L 303.740079 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 305.240079 215.136 
+L 305.240079 212.794226 
+Q 305.240079 209.794226 308.240079 209.794226 
+L 347.954693 209.794226 
+Q 350.954693 209.794226 350.954693 212.794226 
+L 350.954693 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 352.454693 215.136 
+L 352.454693 213.684522 
+Q 352.454693 210.684522 355.454693 210.684522 
+L 395.169307 210.684522 
+Q 398.169307 210.684522 398.169307 213.684522 
+L 398.169307 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 399.669307 215.136 
+L 399.669307 215.136 
+Q 399.669307 212.687687 402.11762 212.687687 
+L 442.935608 212.687687 
+Q 445.383921 212.687687 445.383921 215.136 
+L 445.383921 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 446.883921 215.136 
+L 446.883921 215.136 
+Q 446.883921 212.687687 449.332234 212.687687 
+L 490.150222 212.687687 
+Q 492.598535 212.687687 492.598535 215.136 
+L 492.598535 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 494.098535 215.136 
+L 494.098535 215.136 
+Q 494.098535 213.355409 495.879127 213.355409 
+L 538.032558 213.355409 
+Q 539.81315 213.355409 539.81315 215.136 
+L 539.81315 215.136 
+z
+" clip-path="url(#p4945014576)" style="fill: #2563eb"/>
+   </g>
+   <g id="text_15">
+    <text style="fill: #1f2937; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: start" x="125.156031" y="29.68472" transform="rotate(-0 125.156031 29.68472)">846 of 1,290 (66%) were gone within 0.7 s</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #64748b; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end" x="562.892598" y="191.676322" transform="rotate(-0 562.892598 191.676322)">+45 more lasted 6–18 s (not drawn)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4945014576">
+   <rect x="60.48" y="10.368" width="504" height="204.768"/>
+  </clipPath>
+ </defs>
+</svg>

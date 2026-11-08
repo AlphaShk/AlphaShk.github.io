@@ -1,0 +1,124 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getItems, statusText, trackLabel, type Item } from '../../lib/data';
+import { transformCaseHtml } from '../../lib/case-html';
+import { sourceNotes } from '../../site.config';
+
+export async function getStaticPaths() {
+  const items = await getItems();
+  return items.map((item, i) => ({
+    params: { slug: item.slug },
+    props: { item, index: i, prev: items[i - 1] ?? null, next: items[i + 1] ?? null },
+  }));
+}
+interface Props { item: Item; index: number; prev: Item | null; next: Item | null }
+const { item, index, prev, next } = Astro.props;
+const d = item.data;
+const isCase = d.page === 'case';
+const rendered = (item.entry as { rendered?: { html: string } }).rendered?.html || '';
+const body = transformCaseHtml(rendered, { visuals: d.visuals, metrics: d.metrics, idPrefix: '' });
+const title = item.shortTitle;
+const longTitle = title.length > 14;
+const repo = item.links.find((l) => l.kind === 'repo');
+const demo = item.links.find((l) => l.kind === 'demo');
+const stack = d.stack_summary || d.stack.join(' · ');
+const method = d.method || d.card?.facts?.find((f) => f.key === 'Method')?.value;
+const outcome = d.outcome || '';
+const spec = [
+  ['Status', statusText(item)],
+  ['Role', d.role],
+  ['Period', d.period],
+  ['Stack', stack],
+  ['Method', method],
+  ['Outcome', outcome],
+  ['Evaluation', d.evaluation],
+].filter(([, v]) => v) as [string, string][];
+const showToc = body.sections.length >= 3;
+const linkRows = [
+  ...(item.paper ? [{ title: item.paper.label, meta: item.paper.published ? item.paper.meta : 'Working paper · not yet public', href: item.paper.published ? item.paper.href : '', primary: true }] : []),
+  ...item.links.map((l) => ({ title: l.label, meta: l.meta || (l.href.includes('github.com') ? 'GitHub · public' : new URL(l.href, 'https://alphashk.github.io').host), href: l.href, primary: false })),
+];
+const linksNo = String(body.sections.length + 1).padStart(2, '0');
+const showDisclaimer = item.tracks.includes('quant_research') && !/not investment advice/i.test(rendered);
+const note = sourceNotes[item.slug];
+const description = d.summary.length > 300 ? `${d.summary.slice(0, 297)}…` : d.summary;
+const statusMarks = item.status;
+const ext = (h: string) => /^https?:/.test(h);
+---
+<Base title={`${title}: ${isCase ? 'case study' : 'project'} · Denys Shkola`} description={description} section="work" ogType="article">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <ol><li><a href="/work/">Work</a></li><li><span aria-current="page">{title}</span></li></ol>
+    </nav>
+    <header class="case-hero">
+      <div class="case-hero__main">
+        <p class="case-kicker"><span class="label">{isCase ? 'Case study' : 'Project'} {String(index + 1).padStart(2, '0')}</span><span class="label">{item.tracks.map((t) => trackLabel(t)).join(' · ')}</span></p>
+        <h1 class:list={['case-title', { 'case-title--long': longTitle }]}>{title}</h1>
+        <p class="case-standfirst">{d.summary}</p>
+        <div class="case-cta">
+          <div class="case-cta__links">
+            {item.paper?.published && <a class="btn btn--primary" href={item.paper.href}><span class="icon icon--doc" aria-hidden="true"></span>Read the paper · PDF, {item.paper.meta?.split(' · ')[0]}</a>}
+            {repo && <a class:list={['btn', { 'btn--primary': !item.paper?.published }]} href={repo.href}>Code on GitHub<span class="icon icon--ext" aria-hidden="true"></span></a>}
+            {demo && <a class="btn" href={demo.href}>{demo.label.startsWith('Live') ? 'Live demo' : demo.label}<span class="icon icon--ext" aria-hidden="true"></span></a>}
+          </div>
+          {statusMarks.map((s) => <span class:list={['st', `st--${s.kind}`]}>{s.kind === 'private' && s.text === 'Private code' ? 'Code is private' : s.text}</span>)}
+          {item.paper && !item.paper.published && <span class="st st--private">Paper not yet public</span>}
+        </div>
+      </div>
+      {d.ai_note && (
+        <aside class="case-hero__side note" aria-label="How it was built">
+          <span class="label">How it was built</span>
+          {d.ai_note}
+        </aside>
+      )}
+      <dl class="case-meta">
+        {spec.map(([k, v]) => <div><dt class="label">{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+    </header>
+  </div>
+  <div class="wrap case-body">
+    {showToc && (
+      <div class="case-toc-col">
+        <nav class="toc" aria-labelledby="toc-title">
+          <p class="label" id="toc-title">Contents</p>
+          <ol>
+            {body.sections.map((s, i) => <li><a href={`#${s.id}`}><span class="n">{String(i + 1).padStart(2, '0')}</span>{s.title}</a></li>)}
+            {linkRows.length > 0 && <li><a href="#links"><span class="n">{linksNo}</span>Links</a></li>}
+          </ol>
+        </nav>
+      </div>
+    )}
+    <div class="case-main" style={showToc ? undefined : 'grid-column: 1 / -1'}>
+      <Fragment set:html={body.html} />
+      {linkRows.length > 0 && (
+        <section class="case-sec prose" aria-labelledby="links">
+          <h2 id="links"><span class="n" aria-hidden="true">{linksNo}</span>Links</h2>
+          <ul class="link-rows">
+            {linkRows.map((l) => (
+              <li>
+                <div><span class="link-rows__title">{l.title}</span>{l.meta && <span class="link-rows__meta">{l.meta}</span>}</div>
+                {l.href ? (
+                  <a class:list={['btn', { 'btn--primary': l.primary }]} href={l.href}>{l.primary ? 'Read the paper' : 'Open'}{ext(l.href) && <span class="icon icon--ext" aria-hidden="true"></span>}<span class="vh">: {l.title}</span></a>
+                ) : (
+                  <span class="st st--private">Not published</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      {note && <p class="disclaimer">Source. {note}</p>}
+      {showDisclaimer && <p class="disclaimer">Research only; not investment advice.</p>}
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="case-pager" aria-label="More work">
+      {prev ? (
+        <a class="prev" href={prev.href}><span class="label"><span class="icon icon--back" aria-hidden="true"></span>Previous</span><b>{prev.shortTitle}</b></a>
+      ) : (
+        <a class="prev" href="/work/"><span class="label"><span class="icon icon--back" aria-hidden="true"></span>All work</span><b>Work</b></a>
+      )}
+      {next && <a class="next" href={next.href}><span class="label">Next<span class="icon icon--arrow" aria-hidden="true"></span></span><b>{next.shortTitle}</b></a>}
+    </nav>
+  </div>
+</Base>

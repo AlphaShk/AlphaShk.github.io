@@ -1,0 +1,17 @@
+---
+import { profile, publicSkillItems } from '../lib/data';
+
+interface Props { groups?: string[] }
+const { groups } = Astro.props;
+const all = profile.skills as { group: string; items: string[] }[];
+const list = (groups && groups.length ? groups.map((g) => all.find((x) => x.group === g)).filter(Boolean) : all) as typeof all;
+const shown = list.map((g) => ({ ...g, items: publicSkillItems(g.items) })).filter((g) => g.items.length);
+---
+<dl class="skills">
+  {shown.map((g) => (
+    <div>
+      <dt class="label">{g.group}</dt>
+      <dd><ul>{g.items.map((s) => <li class="nw-item">{s}</li>)}</ul></dd>
+    </div>
+  ))}
+</dl>

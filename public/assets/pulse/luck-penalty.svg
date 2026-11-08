@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="576pt" height="244.8pt" viewBox="0 0 576 244.8" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img">
+ <title>Expected best t-statistic among N strategies with no edge</title>
+ <desc>The expected maximum of N standard-normal test statistics rises with the number of variants tried: about 0.5 at N = 2, 1.6 at 10, 2.5 at 100, 3.3 at 1,000 and 3.43 at the program's 1,871 counted trials, well above the usual single-test pass mark of t = 2.</desc>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 244.8 
+L 576 244.8 
+L 576 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 74.88 198.288 
+L 558.72 198.288 
+L 558.72 12.24 
+L 74.88 12.24 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #64748b" x="74.88" y="212.296301" transform="rotate(-0 74.88 212.296301)">2</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #64748b" x="174.407845" y="212.296301" transform="rotate(-0 174.407845 212.296301)">10</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #64748b" x="316.8" y="212.296301" transform="rotate(-0 316.8 212.296301)">100</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #64748b" x="459.192155" y="212.296301" transform="rotate(-0 459.192155 212.296301)">1,000</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #64748b" x="558.72" y="212.296301" transform="rotate(-0 558.72 212.296301)">5,000</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #1f2937" x="316.8" y="226.619543" transform="rotate(-0 316.8 226.619543)">strategy variants tried, N (count, log scale)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6">
+      <path d="M 74.88 198.288 
+L 558.72 198.288 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="68.88" y="202.29215" transform="rotate(-0 68.88 202.29215)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_8">
+      <path d="M 74.88 151.776 
+L 558.72 151.776 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9"/>
+     <g id="text_8">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="68.88" y="155.78015" transform="rotate(-0 68.88 155.78015)">1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_10">
+      <path d="M 74.88 105.264 
+L 558.72 105.264 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11"/>
+     <g id="text_9">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="68.88" y="109.26815" transform="rotate(-0 68.88 109.26815)">2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_12">
+      <path d="M 74.88 58.752 
+L 558.72 58.752 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13"/>
+     <g id="text_10">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="68.88" y="62.75615" transform="rotate(-0 68.88 62.75615)">3</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_14">
+      <path d="M 74.88 12.24 
+L 558.72 12.24 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15"/>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="68.88" y="16.24415" transform="rotate(-0 68.88 16.24415)">4</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill: #1f2937" transform="translate(43.651182 162.731266) rotate(-90)">expected best t-statistic</text>
+     <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill: #1f2937" transform="translate(55.62335 147.149937) rotate(-90)">with no real edge</text>
+    </g>
+   </g>
+   <g id="line2d_16">
+    <path d="M 74.88 105.264 
+L 558.72 105.264 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #64748b; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_17">
+    <path d="M 74.88 174.113139 
+L 80.928 170.028228 
+L 86.976 166.191798 
+L 94.2336 161.85972 
+L 101.4912 157.776132 
+L 109.9584 153.275847 
+L 118.4256 149.017055 
+L 128.1024 144.401809 
+L 138.9888 139.484401 
+L 149.8752 134.81667 
+L 161.9712 129.882676 
+L 174.0672 125.179679 
+L 187.3728 120.239176 
+L 201.888 115.093138 
+L 217.6128 109.769485 
+L 233.3376 104.675542 
+L 250.272 99.416514 
+L 268.416 94.013083 
+L 287.7696 88.483323 
+L 308.3328 82.842971 
+L 330.1056 77.105711 
+L 353.088 71.283423 
+L 377.28 65.38642 
+L 402.6816 59.423655 
+L 429.2928 53.402907 
+L 457.1136 47.33094 
+L 487.3536 40.963279 
+L 518.8032 34.572389 
+L 551.4624 28.161259 
+L 558.72 26.765554 
+L 558.72 26.765554 
+" clip-path="url(#p295082dc64)" style="fill: none; stroke: #2563eb; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="554.893617" y="117.923501" transform="rotate(-0 554.893617 117.923501)">usual pass mark for a single test, t = 2</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #1f2937" x="485.933328" y="26.473267" transform="rotate(-0 485.933328 26.473267)">1,871 trials counted: 3.43</text>
+   </g>
+   <g id="line2d_18">
+    <defs>
+     <path id="mddc4ae2ec7" d="M 0 4.5 
+C 1.193414 4.5 2.338109 4.025852 3.181981 3.181981 
+C 4.025852 2.338109 4.5 1.193414 4.5 0 
+C 4.5 -1.193414 4.025852 -2.338109 3.181981 -3.181981 
+C 2.338109 -4.025852 1.193414 -4.5 0 -4.5 
+C -1.193414 -4.5 -2.338109 -4.025852 -3.181981 -3.181981 
+C -4.025852 -2.338109 -4.5 -1.193414 -4.5 0 
+C -4.5 1.193414 -4.025852 2.338109 -3.181981 3.181981 
+C -2.338109 4.025852 -1.193414 4.5 0 4.5 
+z
+" style="stroke: #ffffff; stroke-width: 2"/>
+    </defs>
+    <g clip-path="url(#p295082dc64)">
+     <use xlink:href="#mddc4ae2ec7" x="497.933328" y="38.788209" style="fill: #2563eb; stroke: #ffffff; stroke-width: 2"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p295082dc64">
+   <rect x="74.88" y="12.24" width="483.84" height="186.048"/>
+  </clipPath>
+ </defs>
+</svg>

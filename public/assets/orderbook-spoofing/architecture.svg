@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 464" width="960" height="464" role="img" aria-labelledby="spoof-arch-title spoof-arch-desc" font-family="Inter, system-ui, sans-serif">
+  <title id="spoof-arch-title">Spoofing-pattern detector architecture</title>
+  <desc id="spoof-arch-desc">The venue's feeds (the L2 order book, top 20 levels every 100 to 200 ms, and the trade stream over WebSocket, plus open interest polled over REST every 3 seconds) enter a collector that runs one asyncio loop with reconnects and a gap log; a queue feeds a single writer that appends immutable Parquet files partitioned by hour. Two readers use the store. A deterministic, re-runnable analyzer rebuilds large top-of-book placements, classifies how each one ended and scores the pattern, writing JSON and Markdown reports and an hourly digest. A real-time monitor re-scores recent data and runs a quiet/active state machine that raises started, escalated and ended alerts, with a latency budget of about 15 to 25 seconds; it was tested by replaying recorded data. Checks: 35 passing tests, including replays of injected synthetic patterns and synthetic Poisson order flow, and a separate comparison run of about 50 minutes on a large-cap market.</desc>
+  <defs>
+    <marker id="spoof-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="464" fill="#ffffff"/>
+
+  <!-- Row 1: ingest -->
+  <rect x="24" y="32" width="272" height="96" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="160" y="60" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Venue feeds</text>
+  <text x="160" y="82" text-anchor="middle" font-size="12" fill="#64748b">L2 book, top 20 levels, 100–200 ms</text>
+  <text x="160" y="100" text-anchor="middle" font-size="12" fill="#64748b">trade stream</text>
+  <text x="160" y="118" text-anchor="middle" font-size="12" fill="#64748b">open interest, polled every 3 s</text>
+
+  <line x1="296" y1="80" x2="342" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#spoof-arrow)"/>
+
+  <rect x="344" y="32" width="272" height="96" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="60" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Collector</text>
+  <text x="480" y="82" text-anchor="middle" font-size="12" fill="#64748b">WebSocket streams + REST poll</text>
+  <text x="480" y="100" text-anchor="middle" font-size="12" fill="#64748b">one asyncio loop, reconnects</text>
+  <text x="480" y="118" text-anchor="middle" font-size="12" fill="#64748b">gap log · queue → one writer</text>
+
+  <line x1="616" y1="80" x2="662" y2="80" stroke="#2563eb" stroke-width="2" marker-end="url(#spoof-arrow)"/>
+
+  <rect x="664" y="32" width="272" height="96" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="800" y="68" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Parquet store</text>
+  <text x="800" y="90" text-anchor="middle" font-size="12" fill="#64748b">append-only, partitioned by hour</text>
+  <text x="800" y="108" text-anchor="middle" font-size="12" fill="#64748b">files never rewritten</text>
+
+  <!-- Store to its two readers -->
+  <path d="M720 128 V160 H480 V190" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#spoof-arrow)"/>
+  <line x1="800" y1="128" x2="800" y2="190" stroke="#2563eb" stroke-width="2" marker-end="url(#spoof-arrow)"/>
+
+  <!-- Row 2: readers -->
+  <rect x="344" y="192" width="272" height="96" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Analyzer</text>
+  <text x="480" y="250" text-anchor="middle" font-size="12" fill="#64748b">deterministic, re-runnable</text>
+  <text x="480" y="268" text-anchor="middle" font-size="12" fill="#64748b">rebuild · classify · score</text>
+
+  <rect x="664" y="192" width="272" height="96" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="800" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Real-time monitor</text>
+  <text x="800" y="250" text-anchor="middle" font-size="12" fill="#64748b">re-scores recent data</text>
+  <text x="800" y="268" text-anchor="middle" font-size="12" fill="#64748b">quiet ↔ active state machine</text>
+
+  <line x1="480" y1="288" x2="480" y2="350" stroke="#2563eb" stroke-width="2" marker-end="url(#spoof-arrow)"/>
+  <line x1="800" y1="288" x2="800" y2="350" stroke="#2563eb" stroke-width="2" marker-end="url(#spoof-arrow)"/>
+
+  <!-- Row 3: outputs -->
+  <rect x="344" y="352" width="272" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="384" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Reports</text>
+  <text x="480" y="406" text-anchor="middle" font-size="12" fill="#64748b">JSON + Markdown · hourly digest</text>
+
+  <rect x="664" y="352" width="272" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="800" y="380" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Real-time alerts</text>
+  <text x="800" y="400" text-anchor="middle" font-size="12" fill="#64748b">started · escalated · ended</text>
+  <text x="800" y="417" text-anchor="middle" font-size="12" fill="#64748b">replay-tested · budget ~15–25 s</text>
+
+  <!-- Side panel: checks -->
+  <rect x="24" y="192" width="272" height="240" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="160" y="232" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Checks</text>
+  <text x="160" y="258" text-anchor="middle" font-size="12" fill="#64748b">35 tests, all passing</text>
+  <text x="160" y="278" text-anchor="middle" font-size="12" fill="#64748b">replays of injected patterns</text>
+  <text x="160" y="298" text-anchor="middle" font-size="12" fill="#64748b">synthetic Poisson order flow</text>
+  <text x="160" y="342" text-anchor="middle" font-size="12" font-weight="600" fill="#1f2937">Comparison run</text>
+  <text x="160" y="364" text-anchor="middle" font-size="12" fill="#64748b">a large-cap market</text>
+  <text x="160" y="384" text-anchor="middle" font-size="12" fill="#64748b">about 50 minutes</text>
+</svg>

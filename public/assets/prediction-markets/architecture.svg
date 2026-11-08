@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 528" width="960" height="528" role="img" aria-labelledby="pm-arch-title pm-arch-desc" font-family="Inter, system-ui, sans-serif">
+  <title id="pm-arch-title">Prediction-market matching and arbitrage scanner: architecture</title>
+  <desc id="pm-arch-desc">Two market crawlers page through every open Kalshi and Polymarket market over the venues' public REST APIs and publish them to Apache Kafka, where a normaliser maps both venues into one binary-contract model. The matching funnel reads the normalised markets from Kafka, runs retrieval, prefilters and a two-stage LLM check, writes matched pairs and dropped candidates to PostgreSQL 16 and publishes pair updates to Kafka. A scan scheduler reads the active pairs from PostgreSQL and scanner status and settings from Kafka, and publishes scan tasks keyed by match ID to Kafka. Scanner replicas in one consumer group take the tasks, fetch both order books from the venues, walk their depth, apply each venue's fees and publish arbitrage events to Kafka. A history writer stores the events in PostgreSQL. FastAPI serves REST from PostgreSQL and a WebSocket feed from Kafka to a React dashboard, and passes dashboard settings back to Kafka. Eleven Docker Compose services; the workers exchange messages over eight Kafka topics. All venue access is public, unauthenticated reads; nothing in the system places orders.</desc>
+  <defs>
+    <marker id="pm-arch-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="pm-arch-tail" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M10 0 L0 5 L10 10 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="528" fill="#ffffff"/>
+
+  <!-- Venues -->
+  <rect x="24" y="24" width="912" height="52" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="46" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Kalshi · Polymarket public REST APIs</text>
+  <text x="480" y="65" text-anchor="middle" font-size="12" fill="#64748b">markets, settlement rules and order books</text>
+
+  <line x1="144" y1="76" x2="144" y2="106" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-arch-head)"/>
+  <text x="154" y="96" font-size="12" fill="#64748b">every open market</text>
+  <line x1="600" y1="76" x2="600" y2="106" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-arch-head)"/>
+  <text x="610" y="96" font-size="12" fill="#64748b">order books</text>
+
+  <!-- Row A: crawlers and scanners -->
+  <rect x="24" y="108" width="240" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="144" y="138" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Market crawlers</text>
+  <text x="144" y="160" text-anchor="middle" font-size="12" fill="#64748b">2 fetchers + normaliser</text>
+
+  <rect x="480" y="108" width="240" height="72" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="600" y="138" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Scanner replicas × N</text>
+  <text x="600" y="160" text-anchor="middle" font-size="12" fill="#64748b">walk both books, apply fees</text>
+
+  <line x1="144" y1="180" x2="144" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-arch-head)"/>
+  <line x1="600" y1="182" x2="600" y2="210" stroke="#2563eb" stroke-width="2" marker-start="url(#pm-arch-tail)" marker-end="url(#pm-arch-head)"/>
+
+  <!-- Bus -->
+  <rect x="24" y="212" width="912" height="56" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="236" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Apache Kafka · 8 topics</text>
+  <text x="480" y="255" text-anchor="middle" font-size="12" fill="#64748b">raw markets ×2 · normalised markets · pair updates · scan tasks · arbitrage events · settings · scanner status</text>
+
+  <!-- Row C: matching, scheduling, serving. Matcher and scheduler both read from and publish to Kafka. -->
+  <line x1="144" y1="270" x2="144" y2="298" stroke="#2563eb" stroke-width="2" marker-start="url(#pm-arch-tail)" marker-end="url(#pm-arch-head)"/>
+  <line x1="376" y1="270" x2="376" y2="298" stroke="#2563eb" stroke-width="2" marker-start="url(#pm-arch-tail)" marker-end="url(#pm-arch-head)"/>
+  <line x1="488" y1="268" x2="488" y2="410" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-arch-head)"/>
+  <text x="496" y="344" font-size="12" fill="#64748b">history writer</text>
+  <line x1="672" y1="270" x2="672" y2="298" stroke="#2563eb" stroke-width="2" marker-start="url(#pm-arch-tail)" marker-end="url(#pm-arch-head)"/>
+
+  <rect x="24" y="300" width="240" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="144" y="326" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Matching funnel</text>
+  <text x="144" y="346" text-anchor="middle" font-size="12" fill="#64748b">retrieval · prefilters</text>
+  <text x="144" y="364" text-anchor="middle" font-size="12" fill="#64748b">two-stage LLM check</text>
+
+  <rect x="288" y="300" width="176" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="376" y="333" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Scan scheduler</text>
+  <text x="376" y="354" text-anchor="middle" font-size="12" fill="#64748b">tasks keyed by match ID</text>
+
+  <rect x="600" y="300" width="144" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="672" y="333" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">FastAPI</text>
+  <text x="672" y="354" text-anchor="middle" font-size="12" fill="#64748b">REST + WebSocket</text>
+
+  <line x1="746" y1="340" x2="782" y2="340" stroke="#2563eb" stroke-width="2" marker-start="url(#pm-arch-tail)" marker-end="url(#pm-arch-head)"/>
+
+  <rect x="784" y="300" width="152" height="80" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="860" y="333" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">React dashboard</text>
+  <text x="860" y="354" text-anchor="middle" font-size="12" fill="#64748b">stream + history</text>
+
+  <!-- Store -->
+  <line x1="144" y1="380" x2="144" y2="410" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-arch-head)"/>
+  <line x1="376" y1="412" x2="376" y2="382" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-arch-head)"/>
+  <line x1="672" y1="382" x2="672" y2="410" stroke="#2563eb" stroke-width="2" marker-start="url(#pm-arch-tail)" marker-end="url(#pm-arch-head)"/>
+
+  <rect x="24" y="412" width="720" height="52" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="384" y="434" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">PostgreSQL 16</text>
+  <text x="384" y="453" text-anchor="middle" font-size="12" fill="#64748b">matched pairs · dropped candidates · signal history</text>
+
+  <!-- Footnote -->
+  <text x="24" y="496" font-size="12" fill="#64748b">11 Docker Compose services; the workers exchange messages over 8 Kafka topics. Scanner replicas share the scan tasks as one consumer group.</text>
+  <text x="24" y="514" font-size="12" fill="#64748b">All venue access is public, unauthenticated reads. Nothing in the system places orders.</text>
+</svg>

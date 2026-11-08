@@ -1,0 +1,46 @@
+---
+import Email from './Email.astro';
+import RoleLabels from './RoleLabels.astro';
+import KeyFigures from './KeyFigures.astro';
+import { lenses, site, type LensKey } from '../site.config';
+import { profile } from '../lib/data';
+
+interface Props { lens: LensKey }
+const { lens } = Astro.props;
+const conf = lenses[lens];
+const identity = profile.identity as typeof profile.identity & { tagline?: string };
+const tagline = identity.tagline || site.taglineFallback;
+const segments = profile.headlines[conf.headline].split(' · ').map((s) => s.trim());
+const affil = (lens === 'general' ? segments.slice(0, 2) : segments.slice(0, 3)).map((s) => s.charAt(0).toUpperCase() + s.slice(1));
+const bio = lens === 'general' ? '' : profile.bios[conf.bio];
+---
+<section class="hero" aria-labelledby="name">
+  <div class="wrap hero__grid">
+    <div class="hero__main">
+      <h1 class="hero__name" id="name">{profile.identity.name}</h1>
+      <p class="hero__claim" set:html={tagline} />
+      <p class="hero__affil">{affil.map((s) => <span class="line">{s}</span>)}</p>
+      <dl class="facts">
+        <div>
+          <dt class="label" id="roles-label">Target roles</dt>
+          <dd><RoleLabels labelledby="roles-label" /></dd>
+        </div>
+        <div>
+          <dt class="label">Location</dt>
+          <dd>{profile.identity.location_line}</dd>
+        </div>
+      </dl>
+      <div class="hero__cta">
+        <Email variant="primary" />
+        <a class="btn" href={site.cvPdf}><span class="icon icon--doc" aria-hidden="true"></span>CV (PDF)</a>
+        <a class="btn" href={profile.identity.linkedin}>LinkedIn<span class="icon icon--ext" aria-hidden="true"></span></a>
+        <a class="btn" href={profile.identity.github}>GitHub<span class="icon icon--ext" aria-hidden="true"></span></a>
+      </div>
+      <p class="hero__start"><span class="label">Start here</span><a class="arrow-link" href={conf.startHere.href}>{conf.startHere.label}<span class="icon icon--arrow" aria-hidden="true"></span></a></p>
+      {bio && <p class="hero__bio">{bio}</p>}
+    </div>
+    <div class="hero__aside">
+      <KeyFigures order={conf.keyFigures} />
+    </div>
+  </div>
+</section>

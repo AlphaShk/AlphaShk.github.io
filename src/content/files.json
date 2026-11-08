@@ -1,0 +1,113 @@
+{
+  "assets": {
+    "/assets/erste-ai-modernization/pipeline.svg": {
+      "bytes": 5653,
+      "width": 960,
+      "height": 440
+    },
+    "/assets/imc-prosperity-4/fill-model-check.svg": {
+      "bytes": 9851,
+      "width": 576,
+      "height": 288
+    },
+    "/assets/imc-prosperity-4/r1-test-runs.svg": {
+      "bytes": 28819,
+      "width": 576,
+      "height": 432
+    },
+    "/assets/imc-prosperity-4/regime-machine.svg": {
+      "bytes": 5800,
+      "width": 960,
+      "height": 560
+    },
+    "/assets/market-data-platform/architecture.svg": {
+      "bytes": 5356,
+      "width": 960,
+      "height": 324
+    },
+    "/assets/orderbook-spoofing/architecture.svg": {
+      "bytes": 6410,
+      "width": 960,
+      "height": 464
+    },
+    "/assets/orderbook-spoofing/lifetimes.svg": {
+      "bytes": 10204,
+      "width": 576,
+      "height": 259
+    },
+    "/assets/orderbook-spoofing/side-alternation.svg": {
+      "bytes": 31260,
+      "width": 576,
+      "height": 281
+    },
+    "/assets/prediction-markets/architecture.svg": {
+      "bytes": 7459,
+      "width": 960,
+      "height": 528
+    },
+    "/assets/prediction-markets/fee-curve.svg": {
+      "bytes": 23992,
+      "width": 576,
+      "height": 281
+    },
+    "/assets/prediction-markets/funnel.svg": {
+      "bytes": 4500,
+      "width": 960,
+      "height": 512
+    },
+    "/assets/prediction-markets/llm-cost.svg": {
+      "bytes": 14249,
+      "width": 576,
+      "height": 310
+    },
+    "/assets/pulse/architecture.svg": {
+      "bytes": 6414,
+      "width": 960,
+      "height": 520
+    },
+    "/assets/pulse/gross-vs-cost.svg": {
+      "bytes": 12292,
+      "width": 576,
+      "height": 367
+    },
+    "/assets/pulse/luck-penalty.svg": {
+      "bytes": 8224,
+      "width": 576,
+      "height": 245
+    },
+    "/assets/pulse/survivor-by-year.svg": {
+      "bytes": 9078,
+      "width": 576,
+      "height": 259
+    },
+    "/assets/pulse/trials-by-category.svg": {
+      "bytes": 16077,
+      "width": 576,
+      "height": 360
+    },
+    "/assets/wutis/crnn-backtest.svg": {
+      "bytes": 57726,
+      "width": 576,
+      "height": 353
+    },
+    "/assets/wutis/timeline.svg": {
+      "bytes": 6527,
+      "width": 960,
+      "height": 310
+    }
+  },
+  "papers": [
+    {
+      "href": "/papers/alpha-search-crypto-perps-2026-short.pdf",
+      "file": "alpha-search-crypto-perps-2026-short.pdf",
+      "pages": 10,
+      "bytes": 590099,
+      "sha256": "bf27a7e277f0e3148021ccbf0582eabdfb49d860ad039356588a1af3cd3429a9"
+    }
+  ],
+  "cv": {
+    "href": "/cv/denys-shkola-cv.pdf",
+    "bytes": 78081,
+    "pages": 1
+  }
+}

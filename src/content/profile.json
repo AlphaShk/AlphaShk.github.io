@@ -1,0 +1,428 @@
+{
+  "identity": {
+    "name": "Denys Shkola",
+    "location_line": "Vienna, Austria",
+    "email": "shkoladenys@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/denysshkola",
+    "github": "https://github.com/AlphaShk",
+    "site": "https://alphashk.github.io"
+  },
+  "headlines": {
+    "general": "Software Engineer at Erste Digital · MSc Mathematics student, University of Vienna · applied AI and quantitative development",
+    "ai": "AI / forward-deployed engineering · agentic modernization of legacy banking code, with automated quality gates and human review",
+    "quant": "Quant development and research · market-data pipelines, cost-aware strategy research, MSc Mathematics (martingale optimal transport)"
+  },
+  "bios": {
+    "general": "I'm a software engineer at Erste Digital in Vienna, where I lead an internal AI accelerator team. Our pipeline turns legacy Natural/Adabas mainframe code into documented, tested Java/OSB connectors and review-ready pull requests, and it has cut typical use-case cycle time by over 80%. I completed my BSc in Mathematics at the University of Vienna while working and am now in the MSc. In my own time I build market-data and quant-research systems.",
+    "ai": "At Erste Digital I lead an internal AI accelerator team. Our pipeline turns legacy Natural/Adabas code into as-is documentation, generated Java/OSB connectors and review-ready pull requests, gated by static analysis, generated tests, code-vs-documentation checks and mandatory human review. It has delivered 5 use cases and 10+ connectors and cut typical cycle time by over 80%. In my own time I have built LLM systems: contract matching across about 255k prediction markets and local-model agents on a Raspberry Pi.",
+    "quant": "I'm an MSc Mathematics student at the University of Vienna, focusing on martingale optimal transport and model calibration; in a summer 2026 research project with Prof. Julio Backhoff-Veraguas I implemented the Bass local-volatility model on SPX options. In Pulse, my solo crypto-perpetuals research stack, I tried about 1,900 strategy variants and deflated the results for that full count. Every short-horizon signal was retired after costs, and my write-up reports that no standalone edge was found."
+  },
+  "about_long": "I'm a software engineer in Vienna with a mathematics background. I joined Erste Digital, Erste Group's technology subsidiary, as an intern in February 2024 and have been a Software Engineer there since September 2024. I lead an internal AI accelerator team whose pipeline turns legacy Natural/Adabas mainframe code into as-is documentation, generated Java/OSB integration connectors and review-ready pull requests. Static analysis, generated tests, code-vs-documentation checks and mandatory human review are built in. So far it has delivered five complete use cases and 10+ connectors and cut typical use-case cycle time by over 80%. I also maintain customer-data services and own production incidents in a regulated banking environment.\n\nI completed my BSc in Mathematics at the University of Vienna in the standard six semesters while working. My thesis, written within the Bachelor seminar and graded 1, built and tested quantum neural networks for financial forecasting and reported plainly that they did not beat naive baselines. I'm now in the MSc, focusing on martingale optimal transport and model calibration. At WUTIS, a Vienna student investment society, I led two project teams and ran coding workshops.\n\nOutside work I build research systems. Pulse, my solo crypto-perpetuals stack, runs 24/7 on a Raspberry Pi 5. I tried about 1,900 strategy variants, deflated the results for that full count and wrote them up as a working paper, negative results included.\n\nI built Pulse and two LLM projects, a prediction-market contract matcher and an n8n agent stack, with AI coding agents (Claude Code and Codex); in Pulse, adversarial verifier agents rebuilt results from raw data.",
+  "experience": [
+    {
+      "id": "erste-software-engineer",
+      "kind": "employment",
+      "role": "Software Engineer",
+      "org": "Erste Digital (Erste Group)",
+      "period": "Sep 2024 – Present",
+      "start": "2024-09",
+      "end": null,
+      "location": "Vienna, Austria",
+      "bullets": [
+        "Lead an internal AI accelerator team and built an AI modernization pipeline for legacy Natural/Adabas mainframe code: call-chain mapping → source ingestion → AI analysis and as-is documentation (screens, business rules) → generated Java/OSB integration connectors → review-ready pull requests.",
+        "Delivered 5 complete use cases and 10+ connectors; typical use-case cycle time fell by over 80%, from more than three monthly release cycles to under one work week and a single release (n = 5).",
+        "Orchestrate Copilot CLI, Bash, a deterministic code transpiler, MCP, agents and reusable skills in CI/CD, with quality gates from static analysis, generated tests, code-vs-documentation checks and mandatory human review.",
+        "Maintain customer-data services, the OSB–Natural integration layer and data-delivery endpoints; introduced Kafka lifecycle events (mainframe to Kafka) for traceability and monitoring; own production incidents in a regulated banking environment."
+      ],
+      "tracks": [
+        "ai",
+        "quant_dev",
+        "quant_grad"
+      ]
+    },
+    {
+      "id": "market-data-platform",
+      "kind": "project",
+      "role": "Co-developer, two-person team (side project in my free time)",
+      "org": "Private multi-exchange crypto market-data platform (owner and operator: Roman Shkola)",
+      "period": "Feb 2026 – Sep 2026",
+      "start": "2026-02",
+      "end": "2026-09",
+      "location": null,
+      "bullets": [
+        "Co-developed, in a two-person team with owner and operator Roman Shkola, a private production crypto market-data and signal platform with order books from 31 venues: Rust collectors → NATS → Go gateway and market engine → ClickHouse, PostgreSQL and Redis, with a Node control plane and a React/TypeScript UI.",
+        "Implemented 19 of the platform's 33 Rust exchange integrations (order books, trades, candles, open interest) and the shared instrument/trade normalization framework; opened about 130 pull requests (101 merged).",
+        "Hardened real-time data integrity: per-market order-book sequencing by epoch, sequence number and timestamp, which removed phantom liquidity walls, and live-verified delta-continuity checks (2,634 Bybit deltas, zero gaps).",
+        "The platform measured about 5,000 normalized events/s with 1 ms consumer lag in a 30-second production window, and about 500k WebSocket messages at about 61 ms p99 with zero errors in a one-minute, 25-client load test (measured by the co-developer in Jul 2026, before my 19-venue batch)."
+      ],
+      "tracks": [
+        "ai",
+        "quant_dev",
+        "quant_grad"
+      ]
+    },
+    {
+      "id": "wutis",
+      "kind": "leadership",
+      "role": "Senior Associate, Workshop Leader and Recruiter",
+      "org": "WUTIS, Algorithmic Trading division (Vienna student investment society)",
+      "period": "Oct 2024 – Summer 2026",
+      "start": "2024-10",
+      "end": "2026",
+      "location": "Vienna, Austria",
+      "bullets": [
+        "Progression: Fellow Analyst (winter 2024/25) → Analyst / Project Lead (summer 2025) → Associate / Project Lead (winter 2025/26) → Senior Associate, Workshop Leader and Recruiter (summer 2026).",
+        "Led a 3-person CRNN volatility-forecasting team (summer 2025) and a 5-person quantum-ML portfolio team (winter 2025/26).",
+        "Ran an internal coding workshop for the division (Mar 2025) and two workshops in Mar 2026: “Introduction to Advanced Coding” and “Docker and Google Cloud”.",
+        "Recruiting: ran applicant coffee chats (Sep 2025 – Feb 2026) and authored the summer-2026 fellowship assignment and a Superday case study."
+      ],
+      "links": [
+        {
+          "label": "CRNN volatility forecasting: team pitch deck (PDF, WUTIS, June 2025)",
+          "href": "https://wutis.at/wp-content/uploads/crnn_slides.pdf"
+        },
+        {
+          "label": "Quantum on Quantum: QNN portfolio team pitch deck (PDF, WUTIS, January 2026)",
+          "href": "https://wutis.at/wp-content/uploads/WUTIS_QNN.pdf"
+        }
+      ],
+      "tracks": [
+        "ai",
+        "quant_dev",
+        "quant_grad"
+      ]
+    },
+    {
+      "id": "erste-intern",
+      "kind": "employment",
+      "role": "Intern, Mainframe (Natural) Developer",
+      "org": "Erste Digital (Erste Group)",
+      "period": "Feb 2024 – Aug 2024",
+      "start": "2024-02",
+      "end": "2024-08",
+      "location": "Vienna, Austria",
+      "bullets": [
+        "Customer-database business logic in Natural/Adabas and internal analysis tooling, 25 h/week alongside the BSc."
+      ],
+      "tracks": [
+        "ai",
+        "quant_dev",
+        "quant_grad"
+      ]
+    },
+    {
+      "id": "dhl-it-services",
+      "kind": "earlier",
+      "earlier": true,
+      "role": "UI test automation (Java/Selenium)",
+      "org": "DHL IT Services",
+      "period": "Jun 2022",
+      "start": "2022-06",
+      "end": "2022-06",
+      "location": "Prague, Czech Republic",
+      "bullets": [
+        "Java/Selenium UI test automation for myDHLi."
+      ],
+      "tracks": [
+        "ai",
+        "quant_dev"
+      ]
+    },
+    {
+      "id": "regmik",
+      "kind": "earlier",
+      "earlier": true,
+      "role": "iOS prototype (Swift)",
+      "org": "RegMik (R&D manufacturer of sensors and measuring devices)",
+      "period": null,
+      "start": null,
+      "end": null,
+      "location": "Chernihiv, Ukraine",
+      "bullets": [
+        "iOS prototype in Swift (SwiftUI, MapKit location view)."
+      ],
+      "tracks": [
+        "ai"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "msc-mathematics",
+      "degree": "MSc Mathematics (in progress)",
+      "institution": "University of Vienna",
+      "period": "Mar 2026 – expected autumn 2027",
+      "start": "2026-03",
+      "expected_end": "autumn 2027",
+      "details": [
+        "English-taught programme, 120 ECTS; MSc-level courses since summer semester 2026.",
+        "Research direction: martingale optimal transport and model calibration (Bass-type).",
+        "Summer 2026 research project with Prof. Julio Backhoff-Veraguas: implemented the Bass local-volatility model on SPX options.",
+        "Grade 1 in the MSc-level proseminars Mathematical Finance (Continuous Time), Advanced Probability Theory and Advanced Numerical Analysis (summer 2026, recorded on the BSc transcript).",
+        "Courses in winter semester 2026/27: Stochastic Processes, SPDEs, Stochastic Methods in Optimal Transport, Mathematics of Scientific ML, Advanced Measure Theory, and the Mathematical Finance and Probability seminar."
+      ]
+    },
+    {
+      "id": "bsc-mathematics",
+      "degree": "BSc Mathematics",
+      "institution": "University of Vienna",
+      "period": "Oct 2023 – Jun 2026",
+      "start": "2023-10",
+      "end": "2026-06",
+      "details": [
+        "Completed in the standard six semesters (most courses in five) while working.",
+        "Grade 1, the best grade in the Austrian system, in Mathematical Finance (lecture and proseminar), Applied Machine Learning (lecture and proseminar), the Analysis 1 and Analysis 2 lectures, and the Bachelor seminar, which includes the thesis.",
+        "Thesis (within the Bachelor seminar): “Quantum Neural Networks: Theory and Application for Financial Time Series Forecasting”, supervised by Priv.-Doz. Dr. Lukas Exl."
+      ]
+    }
+  ],
+  "research": [
+    {
+      "id": "alpha-search-crypto-perps",
+      "title": "Alpha search in crypto perpetual futures",
+      "kind": "Working paper (unpublished, not peer-reviewed)",
+      "year": 2026,
+      "date": "2026-10-21",
+      "link": "/papers/alpha-search-crypto-perps-2026-short.pdf",
+      "summary": "A search, July to October 2026, for an edge in crypto perpetual futures that survives realistic costs. About 1,900 variants were tried (1,871 counted by 21 October, about 1,700 of them a written estimate of the unlogged July–August search), and the results were deflated for that full count. From 12 October, new tests were pre-registered in a hash-chained ledger. Methods include holdouts opened once, walk-forward tests, combinatorial purged cross-validation (CPCV) with embargo, HAC t-statistics, the deflated Sharpe ratio, PBO and placebo and label-permutation controls. Order-book, arbitrage, pairs, event, carry and transformer families failed, mostly because predicted moves were smaller than fees. One low-turnover, dollar-neutral cross-sectional book passed its 2026 holdout, but a separate verification review downgraded the pass and its deflated Sharpe ratio is about zero. Verdict: no standalone edge was found. Backtest research only; not investment advice."
+    },
+    {
+      "id": "bsc-thesis-qnn",
+      "title": "Quantum Neural Networks: Theory and Application for Financial Time Series Forecasting",
+      "kind": "BSc thesis, University of Vienna (written within the Bachelor seminar, graded 1)",
+      "year": 2026,
+      "link": "https://github.com/AlphaShk/qnn-financial-forecasting/blob/main/docs/thesis.pdf",
+      "summary": "Bachelor thesis in mathematics, supervised by Priv.-Doz. Dr. Lukas Exl. It builds quantum neural networks in Qiskit, tunes them with Optuna and retrains them under simulated gate noise to forecast the returns and covariances of five assets; the case study grew out of a WUTIS team project I led. On a 121-day held-out test window they did not beat naive baselines (returns RMSE 0.023279 vs 0.023229 for the null forecast; covariance forecasts about 61% worse than the baseline), and the thesis reports this as a negative result."
+    },
+    {
+      "id": "bass-lv-replication",
+      "title": "Bass local-volatility model on SPX options: a replication of Conze and Henry-Labordère (2021)",
+      "kind": "Paper replication, MSc summer research project",
+      "year": 2026,
+      "link": "https://github.com/AlphaShk/bass-lv-calibration",
+      "summary": "Summer 2026 research project with Prof. Julio Backhoff-Veraguas, implementing “Bass Construction with Multi-Marginals: Lightspeed Computation in a New Local Volatility Model” on a public SPX option-chain sample: forward normalisation from put–call parity, OTM quotes to marginals, fixed-point calibration, Asian and forward-start repricing, the local-vol representation, vol Greeks and vanilla (vega) hedges, and the Bass2 general-kernel operator (Theorem 6.1), checked against the Brownian case; the future-skew and stochastic-volatility calibrations (Sections 6.2–6.3) were not implemented. Replacing 24-node Gauss–Hermite quadrature with an exact convolution of the piecewise-linear maps restores the martingale property (max |z| 17.8 → 1.8) and cuts the fixed point from 254/499 to 10/12 iterations. A faithful replication for research, not a production pricer."
+    }
+  ],
+  "awards": [
+    {
+      "id": "imc-prosperity-4",
+      "title": "IMC Prosperity 4: team reached Phase 2",
+      "year": "2026",
+      "detail": "Team entry in IMC's Prosperity 4 algorithmic-trading competition (Apr 2026); Phase 2 required at least 200,000 XIRECs over rounds 1–2. I built fair-value models and quoting logic and iterated round-1 hidden-run PnL about 2.6x across 8 versions (1,817 to 4,789 XIRECs in competition test runs)."
+    },
+    {
+      "id": "vienna-integration-bee",
+      "title": "Vienna Integration Bee: live phase (2024), qualified (2025)",
+      "year": "2024–2025",
+      "detail": "Reached the live phase in spring 2024; qualified in autumn 2025."
+    },
+    {
+      "id": "jugend-forscht-2023",
+      "title": "Jugend forscht 2023: Saxony-Anhalt state final 2nd prize and Carl Zeiss “Sonderpreis Digitalisierung”",
+      "year": "2023",
+      "detail": "Mathematics/computer science, team of two, entered from Deutsche Schule Prag, with the project “Chatbot als Schülergehilfe”, a fine-tuned German GPT-2 study chatbot with a Spring Boot API and a SwiftUI client. Regional round: 1st place and the c't Magazin special prize."
+    },
+    {
+      "id": "gold-medal-2023",
+      "title": "Gold Medal, school-leaving certificate",
+      "year": "2023",
+      "detail": "Lyceum No. 15, Chernihiv, Ukraine (Jun 2023)."
+    },
+    {
+      "id": "internet-physics-olympiad",
+      "title": "Final-stage participant, XXI All-Ukrainian Internet Physics Olympiad",
+      "year": "2022",
+      "detail": "2021/22 edition; final stage in Jan 2022 (Kherson)."
+    },
+    {
+      "id": "olympiad-prizes",
+      "title": "10 olympiad prizes in mathematics and physics, 6 of them first prizes",
+      "year": "2018–2021",
+      "detail": "Chernihiv city and oblast level: 6 city-round prizes and 4 oblast-level prizes, including 2 oblast-level first prizes. Physics: oblast round 1st (2020); city round 2nd (2018), 1st (2019), 1st (2021). Mathematics: oblast round 3rd (2019) and 2nd (2020); 1st prize at the oblast mathematics olympiad of NU “Chernihiv Polytechnic” (2021); city round 2nd (2018), 1st (2019), 1st (2021)."
+    }
+  ],
+  "competitions": [],
+  "credentials": [
+    {
+      "id": "goethe-c1",
+      "title": "Goethe-Zertifikat C1 (German)",
+      "year": "2022",
+      "detail": "Exam in Prague, Oct 2022."
+    },
+    {
+      "id": "ibm-quantum-information",
+      "title": "IBM “Basics of Quantum Information” badge (Credly)",
+      "year": "2025",
+      "detail": "Sep 2025."
+    },
+    {
+      "id": "authentic-data-science",
+      "title": "Data-science training programme, Authentic Data Science",
+      "year": "2024",
+      "detail": "Oct–Dec 2024; capstone completed."
+    },
+    {
+      "id": "ibm-mainframe-courses",
+      "title": "Completed all 7 courses of the IBM Mainframe Developer Professional Certificate (Coursera)",
+      "year": "2024",
+      "detail": "All courses completed by Aug 2024."
+    }
+  ],
+  "skills": [
+    {
+      "group": "AI engineering",
+      "items": [
+        "Agentic pipelines with Copilot CLI, MCP, agents and reusable skills",
+        "Claude Code and Codex (headless and multi-agent)",
+        "LLM APIs",
+        "Hybrid retrieval (TF-IDF + dense, reciprocal-rank fusion)",
+        "Evaluation harnesses",
+        "Self-hosted local-model stacks: n8n, Ollama, Qdrant, SearXNG"
+      ]
+    },
+    {
+      "group": "Programming languages",
+      "items": [
+        "Python",
+        "Rust",
+        "Go",
+        "TypeScript",
+        "Java",
+        "SQL",
+        "Bash",
+        "Natural (Adabas)",
+        "Swift"
+      ]
+    },
+    {
+      "group": "ML and scientific Python",
+      "items": [
+        "pandas",
+        "NumPy",
+        "scikit-learn",
+        "PyTorch",
+        "TensorFlow/Keras",
+        "statsmodels",
+        "LightGBM",
+        "Optuna",
+        "Qiskit",
+        "sentence-transformers"
+      ]
+    },
+    {
+      "group": "Data, streaming and storage",
+      "items": [
+        "Kafka",
+        "NATS",
+        "Redis (Streams, Bull)",
+        "ClickHouse",
+        "PostgreSQL",
+        "MongoDB",
+        "Parquet"
+      ]
+    },
+    {
+      "group": "Backend, web and mobile",
+      "items": [
+        "FastAPI",
+        "REST",
+        "Node.js",
+        "React/TypeScript",
+        "Java/Spring Boot 3",
+        "Swift (UIKit/SwiftUI)"
+      ]
+    },
+    {
+      "group": "Infrastructure and delivery",
+      "items": [
+        "Docker",
+        "Linux/systemd",
+        "WireGuard",
+        "Raspberry Pi operations",
+        "Git, SVN, Bitbucket",
+        "CI/CD",
+        "Static analysis and code review",
+        "Production incident response",
+        "Selenium UI test automation"
+      ]
+    },
+    {
+      "group": "Banking and mainframe (production at Erste Digital)",
+      "items": [
+        "Natural",
+        "Adabas",
+        "z/OS/TSO",
+        "Oracle Service Bus (OSB)",
+        "Java",
+        "Kafka",
+        "SQL",
+        "REST",
+        "Jira/Confluence",
+        "Scrum/Kanban"
+      ]
+    },
+    {
+      "group": "Quant research methods and tools",
+      "items": [
+        "Pre-registration and hash-chained trial ledgers",
+        "Walk-forward testing and purged CPCV with embargo",
+        "HAC t-statistics, deflated Sharpe ratio, PBO",
+        "Placebo and label-permutation controls",
+        "Backtesting (backtrader, hftbacktest)",
+        "Alpaca API"
+      ]
+    },
+    {
+      "group": "Mathematics",
+      "items": [
+        "Probability and stochastic calculus",
+        "Martingales and martingale optimal transport",
+        "SDEs and SPDEs",
+        "Measure theory",
+        "Black–Scholes, Heston, local and stochastic volatility",
+        "Bass calibration",
+        "Statistics and time series",
+        "Numerical analysis",
+        "Optimization",
+        "Machine learning"
+      ]
+    },
+    {
+      "group": "Writing and documentation",
+      "items": [
+        "LaTeX"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "name": "Ukrainian",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "C1"
+    },
+    {
+      "name": "German",
+      "level": "C1 (Goethe-Zertifikat)"
+    }
+  ],
+  "links": {
+    "email": "mailto:shkoladenys@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/denysshkola",
+    "github": "https://github.com/AlphaShk",
+    "site": "https://alphashk.github.io",
+    "paper_pdf": "/papers/alpha-search-crypto-perps-2026-short.pdf",
+    "thesis_pdf": "https://github.com/AlphaShk/qnn-financial-forecasting/blob/main/docs/thesis.pdf",
+    "repos": {
+      "qnn-financial-forecasting": "https://github.com/AlphaShk/qnn-financial-forecasting",
+      "bass-lv-calibration": "https://github.com/AlphaShk/bass-lv-calibration",
+      "math-notes-agent-skills": "https://github.com/AlphaShk/math-notes-agent-skills",
+      "n8n-pi-local-ai-agents": "https://github.com/AlphaShk/n8n-pi-local-ai-agents",
+      "ects-ledger": "https://github.com/AlphaShk/ects-ledger",
+      "twisty-lab": "https://github.com/AlphaShk/twisty-lab",
+      "puppet-cube-solver": "https://github.com/AlphaShk/puppet-cube-solver"
+    }
+  }
+}

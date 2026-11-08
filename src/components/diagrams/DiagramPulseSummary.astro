@@ -1,0 +1,73 @@
+---
+import type { Item } from '../../lib/data';
+interface Props { id: string; item: Item }
+const { id, item } = Astro.props;
+const count = item.data.metrics.find((m) => m.kind === 'count')?.value;
+const trials = count ? `${count} trials` : 'Trial ledger';
+const title = `Diagram in two lanes. On one Raspberry Pi 5: Bybit and Binance WebSockets feed Rust ingest, Redis Streams and Python services for storage, the daily digest, the console and the paper book. Offline research on public data: ${count ? `${count} trials counted` : 'every trial counted'}, validated with CPCV, the deflated Sharpe ratio, placebo controls and a sealed holdout, written up as a working paper that found no standalone edge.`;
+---
+<svg class="dg dg--wide sw-480" style="--w:560" viewBox="0 0 560 240" role="img" aria-labelledby={`${id}-w`} focusable="false">
+  <title id={`${id}-w`}>{title}</title>
+  <rect class="b" x="8" y="8" width="544" height="104" rx="4"></rect>
+  <text class="t--cap" x="20" y="27">ON ONE RASPBERRY PI 5</text>
+  <rect class="n" x="20" y="40" width="112" height="60" rx="2"></rect>
+  <text x="76" y="64" text-anchor="middle">Bybit, Binance</text>
+  <text class="t--s" x="76" y="80" text-anchor="middle">WebSockets</text>
+  <rect class="n" x="152" y="40" width="92" height="60" rx="2"></rect>
+  <text x="198" y="74" text-anchor="middle">Rust ingest</text>
+  <rect class="n" x="264" y="40" width="104" height="60" rx="2"></rect>
+  <text x="316" y="74" text-anchor="middle">Redis Streams</text>
+  <rect class="n" x="388" y="40" width="152" height="60" rx="2"></rect>
+  <text x="464" y="62" text-anchor="middle">Python services</text>
+  <text class="t--s" x="464" y="78" text-anchor="middle">storage · digest</text>
+  <text class="t--s" x="464" y="92" text-anchor="middle">console · paper book</text>
+  <path class="e" d="M132 70 L146 70"></path><path class="ah" d="M152 70 L146 66.5 L146 73.5 Z"></path>
+  <path class="e" d="M244 70 L258 70"></path><path class="ah" d="M264 70 L258 66.5 L258 73.5 Z"></path>
+  <path class="e" d="M368 70 L382 70"></path><path class="ah" d="M388 70 L382 66.5 L382 73.5 Z"></path>
+  <rect class="b" x="8" y="128" width="544" height="104" rx="4"></rect>
+  <text class="t--cap" x="20" y="147">OFFLINE RESEARCH ON PUBLIC DATA</text>
+  <rect class="n" x="20" y="160" width="140" height="56" rx="2"></rect>
+  <text x="90" y="184" text-anchor="middle">{trials}</text>
+  <text class="t--s" x="90" y="200" text-anchor="middle">counted</text>
+  <rect class="n" x="180" y="160" width="196" height="56" rx="2"></rect>
+  <text x="278" y="184" text-anchor="middle">CPCV · deflated Sharpe</text>
+  <text class="t--s" x="278" y="200" text-anchor="middle">placebo · sealed holdout</text>
+  <path class="n n--key" d="M396 160 H530 L540 170 V216 H396 Z"></path>
+  <path class="e e--key" d="M530 160 V170 H540"></path>
+  <text x="468" y="184" text-anchor="middle">Working paper</text>
+  <text class="t--s" x="468" y="200" text-anchor="middle">no standalone edge</text>
+  <path class="e" d="M160 188 L174 188"></path><path class="ah" d="M180 188 L174 184.5 L174 191.5 Z"></path>
+  <path class="e" d="M376 188 L390 188"></path><path class="ah" d="M396 188 L390 184.5 L390 191.5 Z"></path>
+</svg>
+<svg class="dg dg--tall sw-480" style="--w:320" viewBox="0 0 320 532" role="img" aria-labelledby={`${id}-t`} focusable="false">
+  <title id={`${id}-t`}>{title}</title>
+  <rect class="b" x="8" y="8" width="304" height="272" rx="4"></rect>
+  <text class="t--cap" x="20" y="27">ON ONE RASPBERRY PI 5</text>
+  <rect class="n" x="40" y="40" width="240" height="36" rx="2"></rect>
+  <text x="160" y="62" text-anchor="middle">Bybit, Binance WebSockets</text>
+  <rect class="n" x="40" y="96" width="240" height="36" rx="2"></rect>
+  <text x="160" y="118" text-anchor="middle">Rust ingest</text>
+  <rect class="n" x="40" y="152" width="240" height="36" rx="2"></rect>
+  <text x="160" y="174" text-anchor="middle">Redis Streams</text>
+  <rect class="n" x="40" y="208" width="240" height="60" rx="2"></rect>
+  <text x="160" y="228" text-anchor="middle">Python services</text>
+  <text class="t--s" x="160" y="244" text-anchor="middle">storage · digest</text>
+  <text class="t--s" x="160" y="258" text-anchor="middle">console · paper book</text>
+  <path class="e" d="M160 76 L160 90"></path><path class="ah" d="M160 96 L163.5 90 L156.5 90 Z"></path>
+  <path class="e" d="M160 132 L160 146"></path><path class="ah" d="M160 152 L163.5 146 L156.5 146 Z"></path>
+  <path class="e" d="M160 188 L160 202"></path><path class="ah" d="M160 208 L163.5 202 L156.5 202 Z"></path>
+  <rect class="b" x="8" y="296" width="304" height="228" rx="4"></rect>
+  <text class="t--cap" x="20" y="315">OFFLINE RESEARCH ON PUBLIC DATA</text>
+  <rect class="n" x="40" y="328" width="240" height="48" rx="2"></rect>
+  <text x="160" y="348" text-anchor="middle">{trials}</text>
+  <text class="t--s" x="160" y="364" text-anchor="middle">counted</text>
+  <rect class="n" x="40" y="396" width="240" height="48" rx="2"></rect>
+  <text x="160" y="416" text-anchor="middle">CPCV · deflated Sharpe</text>
+  <text class="t--s" x="160" y="432" text-anchor="middle">placebo · sealed holdout</text>
+  <path class="n n--key" d="M40 464 H270 L280 474 V512 H40 Z"></path>
+  <path class="e e--key" d="M270 464 V474 H280"></path>
+  <text x="160" y="484" text-anchor="middle">Working paper</text>
+  <text class="t--s" x="160" y="500" text-anchor="middle">no standalone edge</text>
+  <path class="e" d="M160 376 L160 390"></path><path class="ah" d="M160 396 L163.5 390 L156.5 390 Z"></path>
+  <path class="e" d="M160 444 L160 458"></path><path class="ah" d="M160 464 L163.5 458 L156.5 458 Z"></path>
+</svg>

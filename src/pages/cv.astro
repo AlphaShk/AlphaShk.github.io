@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Timeline from '../components/Timeline.astro';
+import EduAwards from '../components/EduAwards.astro';
+import Skills from '../components/Skills.astro';
+import { bytesLabel, files, profile } from '../lib/data';
+import { site } from '../site.config';
+
+const credentials = profile.credentials as { id: string; title: string; year: string; detail: string }[];
+const pdfMeta = [files.cv.pages ? `${files.cv.pages} page${files.cv.pages > 1 ? 's' : ''}` : '', 'PDF', bytesLabel(files.cv.bytes)].filter(Boolean).join(' · ');
+const research = profile.research;
+---
+<Base title="CV · Denys Shkola" description={`CV of ${profile.identity.name}: ${profile.headlines.general}.`} section="cv">
+  <section class="section page-head" aria-labelledby="cv-title">
+    <div class="wrap">
+      <SectionHead kicker={`CV · last updated ${site.updated}`} title="CV" id="cv-title" level="h1" intro={profile.headlines.general + '.'} />
+      <p class="hero__cta" style="margin-top:0"><a class="btn btn--primary" href={site.cvPdf}><span class="icon icon--doc" aria-hidden="true"></span>Download CV (PDF)</a><span class="label" style="align-self:center">{pdfMeta}</span></p>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="xp-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 1" title="Experience" id="xp-title" />
+      <Timeline full figure={1} includeProjects idPrefix="cv" />
+    </div>
+  </section>
+
+  <section class="section" id="education" aria-labelledby="edu-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 2" title="Education" id="edu-title" />
+      <EduAwards full only="education" />
+    </div>
+  </section>
+
+  <section class="section" id="research" aria-labelledby="res-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 3" title="Research" id="res-title" />
+      <table class="tbl tbl--keyed">
+        <caption class="vh">Research</caption>
+        <thead><tr><th class="label" scope="col">Year</th><th class="label" scope="col">Title</th></tr></thead>
+        <tbody>
+          {research.map((r) => <tr><td class="tbl__k">{r.year}</td><td><span class="tbl__t">{r.title}</span><span class="tbl__d">{r.kind}</span></td></tr>)}
+        </tbody>
+      </table>
+      <p class="sec-foot"><a class="arrow-link" href="/research/">Research summaries and links<span class="icon icon--arrow" aria-hidden="true"></span></a></p>
+    </div>
+  </section>
+
+  <section class="section" id="awards" aria-labelledby="awards-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 4" title="Awards" id="awards-title" />
+      <EduAwards full only="awards" />
+    </div>
+  </section>
+
+  <section class="section" id="credentials" aria-labelledby="cred-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 5" title="Credentials" id="cred-title" />
+      <table class="tbl tbl--keyed">
+        <caption class="vh">Credentials</caption>
+        <thead><tr><th class="label" scope="col">Year</th><th class="label" scope="col">Credential</th></tr></thead>
+        <tbody>
+          {credentials.map((c) => <tr><td class="tbl__k">{c.year}</td><td><span class="tbl__t">{c.title}</span><span class="tbl__d">{c.detail}</span></td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 6" title="Skills" id="skills-title" />
+      <Skills />
+    </div>
+  </section>
+
+  <section class="section" id="languages" aria-labelledby="lang-title">
+    <div class="wrap">
+      <SectionHead kicker="§ 7" title="Languages" id="lang-title" />
+      <dl class="langs">
+        {profile.languages.map((l) => <div><dt class="label">{l.name}</dt><dd>{l.level}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+</Base>

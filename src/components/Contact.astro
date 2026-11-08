@@ -1,0 +1,30 @@
+---
+import Email from './Email.astro';
+import RoleLabels from './RoleLabels.astro';
+import SectionHead from './SectionHead.astro';
+import { profile } from '../lib/data';
+import { site } from '../site.config';
+
+interface Props { kicker: string }
+const { kicker } = Astro.props;
+const strip = (u: string) => u.replace(/^https?:\/\/(www\.)?/, '');
+---
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <SectionHead kicker={kicker} title="Contact" id="contact-title" />
+    <div class="contact">
+      <div class="contact__text">
+        <p class="contact__lead" id="open-to">Open to roles in</p>
+        <RoleLabels labelledby="open-to" />
+        <p class="contact__loc">{profile.identity.location_line}</p>
+      </div>
+      <dl class="contact__list">
+        <div><dt class="label">Email</dt><dd><Email variant="text" /></dd></div>
+        <div><dt class="label">LinkedIn</dt><dd><a href={profile.identity.linkedin}>{strip(profile.identity.linkedin)}</a></dd></div>
+        <div><dt class="label">GitHub</dt><dd><a href={profile.identity.github}>{strip(profile.identity.github)}</a></dd></div>
+        <div><dt class="label">CV (PDF)</dt><dd><a href={site.cvPdf}>denys-shkola-cv.pdf</a></dd></div>
+        <div><dt class="label">CV (web)</dt><dd><a href="/cv/">alphashk.github.io/cv</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>

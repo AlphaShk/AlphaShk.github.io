@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+---
+<Base title="Page not found · Denys Shkola" description="This page isn't here; it may have moved in a rebuild." noindex>
+  <section class="wrap notfound" aria-labelledby="nf-title">
+    <p class="sec-kicker">§ 404</p>
+    <h1 class="sec-title" id="nf-title" style="margin-top:24px">Page not found</h1>
+    <p class="sec-intro" style="margin-top:16px">This page isn’t here; it may have moved in a rebuild.</p>
+    <p class="notfound__links">
+      <a class="btn btn--primary" href="/">Home</a>
+      <a class="btn" href="/work/">Work</a>
+      <a class="btn" href="/research/">Research</a>
+      <a class="btn" href={site.cvPdf}>CV (PDF)</a>
+      <a class="btn" href="/work/pulse/">Pulse case study</a>
+    </p>
+  </section>
+</Base>

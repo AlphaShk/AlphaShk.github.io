@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="576pt" height="288pt" viewBox="0 0 576 288" xmlns="http://www.w3.org/2000/svg" version="1.1" role="img">
+ <title>Wider passive quotes: a gain under lenient matching, none under strict matching</title>
+ <desc>Grouped columns of six-day local backtest PnL for the ASH market maker in XIRECs, Round-2 v1 (gray) versus the Round-2 final candidate with wider passive quotes (blue). Lenient matching: 66,130 versus 99,620, a gain of 33,490. Strict matching: 17,947 for both, no change. PEPPER PnL was identical for both versions, so total six-day PnL moved from 548,154 to 581,644 (plus 6.1 percent) under lenient matching and stayed at 490,715 under strict matching.</desc>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 288 
+L 576 288 
+L 576 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 60.48 230.4 
+L 564.48 230.4 
+L 564.48 51.84 
+L 60.48 51.84 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill: #1f2937" transform="translate(139.298471 246.273594)">lenient matching</text>
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill: #1f2937" transform="translate(102.004175 259.399086)">resting quotes fill against trades</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill: #1f2937" transform="translate(381.631117 246.273594)">strict matching</text>
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill: #1f2937" transform="translate(335.161274 259.399086)">only orders that cross the book fill</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <path d="M 60.48 230.4 
+L 564.48 230.4 
+" clip-path="url(#pbbf50ac39c)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="54.48" y="234.336797" transform="rotate(-0 54.48 234.336797)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <path d="M 60.48 191.582609 
+L 564.48 191.582609 
+" clip-path="url(#pbbf50ac39c)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="54.48" y="195.519406" transform="rotate(-0 54.48 195.519406)">25,000</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <path d="M 60.48 152.765217 
+L 564.48 152.765217 
+" clip-path="url(#pbbf50ac39c)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_5">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="54.48" y="156.702014" transform="rotate(-0 54.48 156.702014)">50,000</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_9">
+      <path d="M 60.48 113.947826 
+L 564.48 113.947826 
+" clip-path="url(#pbbf50ac39c)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_6">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="54.48" y="117.884623" transform="rotate(-0 54.48 117.884623)">75,000</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_11">
+      <path d="M 60.48 75.130435 
+L 564.48 75.130435 
+" clip-path="url(#pbbf50ac39c)" style="fill: none; stroke: #e5e7eb; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_7">
+      <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: end; fill: #64748b" x="54.48" y="79.067232" transform="rotate(-0 54.48 79.067232)">100,000</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #1f2937" x="8.406719" y="141.12" transform="rotate(-90 8.406719 141.12)">ASH PnL, six days (XIRECs)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 60.48 230.4 
+L 564.48 230.4 
+" style="fill: none; stroke: #e5e7eb; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 156.246038 230.4 
+L 172.019623 230.4 
+Q 176.019623 230.4 176.019623 226.4 
+L 176.019623 131.720237 
+Q 176.019623 127.720237 172.019623 127.720237 
+L 156.246038 127.720237 
+Q 152.246038 127.720237 152.246038 131.720237 
+L 152.246038 226.4 
+Q 152.246038 230.4 156.246038 230.4 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #64748b"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 152.246038 230.4 
+L 176.019623 230.4 
+L 176.019623 131.720237 
+L 152.246038 131.720237 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #64748b"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #1f2937" x="164.13283" y="120.533987" transform="rotate(-0 164.13283 120.533987)">66,130</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 186.676226 230.4 
+L 202.449811 230.4 
+Q 206.449811 230.4 206.449811 226.4 
+L 206.449811 79.720459 
+Q 206.449811 75.720459 202.449811 75.720459 
+L 186.676226 75.720459 
+Q 182.676226 75.720459 182.676226 79.720459 
+L 182.676226 226.4 
+Q 182.676226 230.4 186.676226 230.4 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 182.676226 230.4 
+L 206.449811 230.4 
+L 206.449811 79.720459 
+L 182.676226 79.720459 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #2563eb"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #1f2937" x="194.563019" y="68.534209" transform="rotate(-0 194.563019 68.534209)">99,620</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 393.981887 230.4 
+L 409.755472 230.4 
+Q 413.755472 230.4 413.755472 226.4 
+L 413.755472 206.533771 
+Q 413.755472 202.533771 409.755472 202.533771 
+L 393.981887 202.533771 
+Q 389.981887 202.533771 389.981887 206.533771 
+L 389.981887 226.4 
+Q 389.981887 230.4 393.981887 230.4 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #64748b"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 389.981887 230.4 
+L 413.755472 230.4 
+L 413.755472 206.533771 
+L 389.981887 206.533771 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #64748b"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 424.412075 230.4 
+L 440.18566 230.4 
+Q 444.18566 230.4 444.18566 226.4 
+L 444.18566 206.533771 
+Q 444.18566 202.533771 440.18566 202.533771 
+L 424.412075 202.533771 
+Q 420.412075 202.533771 420.412075 206.533771 
+L 420.412075 226.4 
+Q 420.412075 230.4 424.412075 230.4 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #2563eb"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 420.412075 230.4 
+L 444.18566 230.4 
+L 444.18566 206.533771 
+L 420.412075 206.533771 
+z
+" clip-path="url(#pbbf50ac39c)" style="fill: #2563eb"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: middle; fill: #1f2937" x="417.083774" y="195.347521" transform="rotate(-0 417.083774 195.347521)">17,947 each</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: start; fill: #1f2937" x="214.449811" y="88.571865" transform="rotate(-0 214.449811 88.571865)">+33,490</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: start; fill: #1f2937" x="452.18566" y="217.31299" transform="rotate(-0 452.18566 217.31299)">no change</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_12">
+     <path d="M 64.88 41.05195 
+L 75.88 41.05195 
+L 75.88 31.20695 
+L 64.88 31.20695 
+z
+" style="fill: #64748b"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: start; fill: #1f2937" x="84.68" y="39.89695" transform="rotate(-0 84.68 39.89695)">Round-2 v1: passive quotes near fair value</text>
+    </g>
+    <g id="patch_13">
+     <path d="M 311.388281 41.05195 
+L 322.388281 41.05195 
+L 322.388281 31.20695 
+L 311.388281 31.20695 
+z
+" style="fill: #2563eb"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 11px; font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; text-anchor: start; fill: #1f2937" x="331.188281" y="39.89695" transform="rotate(-0 331.188281 39.89695)">final candidate: wider passive quotes</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbbf50ac39c">
+   <rect x="60.48" y="51.84" width="504" height="178.56"/>
+  </clipPath>
+ </defs>
+</svg>

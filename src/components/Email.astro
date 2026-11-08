@@ -1,0 +1,21 @@
+---
+import { profile } from '../lib/data';
+import { mailtoHref, obfuscatedLabel } from '../lib/email';
+
+interface Props { variant: 'primary' | 'header' | 'text' | 'inline' }
+const { variant } = Astro.props;
+const email = profile.identity.email;
+const href = mailtoHref(email);
+const label = obfuscatedLabel(email);
+let html = '';
+if (variant === 'primary') {
+  html = `<a class="btn btn--primary" href="${href}"><span class="icon icon--mail" aria-hidden="true"></span><span class="vh">Email: </span><span class="obf email-long">${label}</span><span class="email-short">Email</span></a>`;
+} else if (variant === 'header') {
+  html = `<a class="site-email" href="${href}"><span class="icon icon--mail" aria-hidden="true"></span>Email</a>`;
+} else if (variant === 'inline') {
+  html = `<a href="${href}">Email</a>`;
+} else {
+  html = `<a href="${href}"><span class="vh">Email: </span><span class="obf">${label}</span></a>`;
+}
+---
+<Fragment set:html={html} />

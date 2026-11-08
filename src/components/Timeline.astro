@@ -1,0 +1,75 @@
+---
+import DiagramErsteTrustLayer from './diagrams/DiagramErsteTrustLayer.astro';
+import { getItem, profile } from '../lib/data';
+
+interface Props { full?: boolean; figure?: number | false; includeProjects?: boolean; idPrefix?: string }
+const { full = false, figure = false, includeProjects = false, idPrefix = 'tl' } = Astro.props;
+type Exp = (typeof profile.experience)[number] & { earlier?: boolean };
+const exp = profile.experience as Exp[];
+const byId = (id: string) => exp.find((e) => e.id === id);
+const erste = ['erste-software-engineer', 'erste-intern'].map(byId).filter(Boolean) as Exp[];
+const groups: { key: string; kind?: string; name: string; desc?: string; roles: Exp[]; href?: string }[] = [];
+if (erste.length) {
+  groups.push({ key: 'erste', name: 'Erste Digital', desc: 'Erste Group’s technology subsidiary · Vienna, Austria', roles: erste, href: '/work/erste-ai-modernization/' });
+}
+if (includeProjects) {
+  for (const e of exp.filter((x) => x.kind === 'project')) {
+    groups.push({ key: e.id, kind: 'Side project · built in my free time', name: e.org, roles: [e], href: `/work/${e.id}/` });
+  }
+}
+for (const e of exp.filter((x) => x.kind === 'leadership')) {
+  groups.push({ key: e.id, kind: 'Student society', name: e.org, desc: e.location || undefined, roles: [e], href: `/work/${e.id}/` });
+}
+const earlier = exp.filter((x) => x.earlier);
+const ersteItem = await getItem('erste-ai-modernization');
+const workSlugs = new Set((await Promise.all(groups.map((g) => (g.href ? getItem(g.href.split('/')[2]) : undefined)))).filter(Boolean).map((i) => i!.slug));
+---
+<ol class="tl">
+  {groups.map((g) => (
+    <li class="tl__org" id={`${idPrefix}-${g.key}`}>
+      <div class="tl__head">
+        <div>
+          {g.kind && <span class="label tl__kind">{g.kind}</span>}
+          <h3 class="tl__name">{g.name}</h3>
+          {g.desc && <p class="tl__desc">{g.desc}</p>}
+        </div>
+      </div>
+      {g.roles.map((r) => (
+        <div class="tl__role">
+          <div class="tl__when">
+            {r.period}
+            {r.end === null && <span class="tl__current">Current</span>}
+          </div>
+          <div class="tl__body">
+            <p class="tl__title">{r.role}</p>
+            <ul class="tl__bullets">
+              {(full ? r.bullets : r.bullets.slice(0, 2)).map((b) => <li>{b}</li>)}
+            </ul>
+            {figure !== false && r.id === 'erste-software-engineer' && (
+              <figure class="fig tl__fig">
+                <div class="fig__canvas"><DiagramErsteTrustLayer id={`${idPrefix}-erste-dg`} item={ersteItem} /></div>
+                <figcaption><span class="fig__no">Fig. {figure}</span>The modernization pipeline my team runs, and its trust layer. Schematic.</figcaption>
+              </figure>
+            )}
+          </div>
+        </div>
+      ))}
+      {g.href && workSlugs.has(g.href.split('/')[2]) && (
+        <div class="tl__role"><div class="tl__body"><p class="tl__link"><a class="arrow-link" href={g.href}>{g.key === 'erste' ? 'Erste case study' : 'Case study'}<span class="icon icon--arrow" aria-hidden="true"></span></a></p></div></div>
+      )}
+    </li>
+  ))}
+  {full && earlier.length > 0 && (
+    <li class="tl__org">
+      <div class="tl__head"><div><span class="label tl__kind">Earlier</span></div></div>
+      <ul class="tl__earlier">
+        {earlier.map((e) => (
+          <li>
+            <span class="tl__when">{e.period || ''}</span>
+            <span class="tl__body"><b>{e.org}</b>{e.location ? `, ${e.location}` : ''}: {e.bullets[0]}</span>
+          </li>
+        ))}
+      </ul>
+    </li>
+  )}
+</ol>

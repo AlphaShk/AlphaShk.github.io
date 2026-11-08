@@ -1,0 +1,62 @@
+---
+import { profile } from '../lib/data';
+
+interface Props { full?: boolean; awards?: string[]; only?: 'education' | 'awards'; mscFirst?: boolean }
+const { full = false, awards, only } = Astro.props;
+const deLang = (s: string) =>
+  s.replace(/“(Sonderpreis Digitalisierung|Chatbot als Schülergehilfe)”/g, '“<span lang="de">$1</span>”').replace(/\bJugend forscht\b/g, '<span lang="de">Jugend forscht</span>');
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const edu = profile.education.map((e) => {
+  const expected = (e as { expected_end?: string }).expected_end;
+  const year = expected ? expected.replace(/^\D*/, '') : (e.period.match(/(\d{4})\s*$/) || [])[1] || '';
+  const small = expected ? `expected ${expected.replace(/\s*\d{4}$/, '')}` : '';
+  const details = full ? e.details : e.details.filter((d) => /^Research direction|^Thesis/.test(d)).slice(0, 1);
+  return { ...e, year, small, details };
+});
+const allAwards = profile.awards as { id: string; title: string; year: string; detail: string }[];
+const list = awards ? awards.map((id) => allAwards.find((a) => a.id === id)).filter(Boolean) as typeof allAwards : [...allAwards].sort((a, b) => Number(b.year.slice(-4)) - Number(a.year.slice(-4)));
+---
+<div class="split">
+  {only !== 'awards' && (
+    <div>
+      <h3 class="sub-title">Education</h3>
+      <table class="tbl tbl--keyed">
+        <caption class="vh">Education</caption>
+        <thead><tr><th class="label" scope="col">Year</th><th class="label" scope="col">Degree</th></tr></thead>
+        <tbody>
+          {edu.map((e) => (
+            <tr>
+              <td class="tbl__k">{e.year}{e.small && <small>{e.small}</small>}</td>
+              <td>
+                <span class="tbl__t">{e.degree}</span>
+                <span class="tbl__d">{e.institution} · {e.period}</span>
+                {e.details.map((d) => <span class="tbl__d">{d}</span>)}
+                {!full && e.id === 'bsc-mathematics' && <span class="tbl__d"><a href="/work/qnn-financial-forecasting/">Thesis code and results</a></span>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+  {only !== 'education' && (
+    <div>
+      <h3 class="sub-title">Awards</h3>
+      <table class="tbl tbl--keyed">
+        <caption class="vh">Awards</caption>
+        <thead><tr><th class="label" scope="col">Year</th><th class="label" scope="col">Award</th></tr></thead>
+        <tbody>
+          {list.map((a) => (
+            <tr>
+              <td class="tbl__k">{a.year}</td>
+              <td>
+                <span class="tbl__t" set:html={deLang(esc(a.title))} />
+                {(full || a.id === 'imc-prosperity-4') && <span class="tbl__d" set:html={deLang(esc(a.detail))} />}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+</div>

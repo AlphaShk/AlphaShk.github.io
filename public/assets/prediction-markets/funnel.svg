@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 512" width="960" height="512" role="img" aria-labelledby="pm-funnel-title pm-funnel-desc" font-family="Inter, system-ui, sans-serif">
+  <title id="pm-funnel-title">Matching funnel counts from one offline run on 19 October 2026</title>
+  <desc id="pm-funnel-desc">Pairing every one of 124,521 Kalshi markets with every one of 130,770 Polymarket markets gives about 16.3 billion possible pairs. Retrieval, lexical only in this run because dense retrieval was off, returned 355,143 candidate pairs (measured). Two prefilters removed 10,272 pairs, leaving 344,871 (measured). The last prefilter was measured on a 2,000-pair sample, of which 98.7% were kept, giving an estimated 340,215 pairs bound for LLM verification, with a 95% interval of 338,122 to 341,666. The next stage, a two-stage LLM check, was not run on the full set; its cost was modelled only. Retrieval and the two full prefilters took 141 seconds; the whole run, including the sampled prefilter, took 158 seconds. Box widths are not to scale.</desc>
+  <defs>
+    <marker id="pm-funnel-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="960" height="512" fill="#ffffff"/>
+
+  <!-- 1. all pairs (computed) -->
+  <rect x="24" y="24" width="912" height="56" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="48" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">≈ 16.3 billion possible pairs</text>
+  <text x="480" y="68" text-anchor="middle" font-size="12" fill="#64748b">computed: 124,521 Kalshi × 130,770 Polymarket markets</text>
+
+  <line x1="480" y1="80" x2="480" y2="118" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-funnel-head)"/>
+  <text x="494" y="104" font-size="12" fill="#64748b">retrieval: lexical only in this run (dense retrieval off)</text>
+
+  <!-- 2. retrieval candidates (measured) -->
+  <rect x="84" y="120" width="792" height="56" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="144" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">355,143 retrieval candidates</text>
+  <text x="480" y="164" text-anchor="middle" font-size="12" fill="#64748b">measured</text>
+
+  <line x1="480" y1="176" x2="480" y2="214" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-funnel-head)"/>
+  <text x="494" y="200" font-size="12" fill="#64748b">two prefilters remove 10,272 pairs</text>
+
+  <!-- 3. after prefilters (measured) -->
+  <rect x="144" y="216" width="672" height="56" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="240" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">344,871 after prefilters</text>
+  <text x="480" y="260" text-anchor="middle" font-size="12" fill="#64748b">measured</text>
+
+  <line x1="480" y1="272" x2="480" y2="310" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-funnel-head)"/>
+  <text x="494" y="296" font-size="12" fill="#64748b">last prefilter measured on a 2,000-pair sample: 98.7% kept</text>
+
+  <!-- 4. LLM-bound (estimated) -->
+  <rect x="204" y="312" width="552" height="56" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5"/>
+  <text x="480" y="336" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">≈ 340,215 pairs bound for the LLM</text>
+  <text x="480" y="356" text-anchor="middle" font-size="12" fill="#64748b">estimated · 95% interval 338,122–341,666</text>
+
+  <line x1="480" y1="368" x2="480" y2="406" stroke="#2563eb" stroke-width="2" marker-end="url(#pm-funnel-head)"/>
+  <text x="494" y="392" font-size="12" fill="#64748b">two-stage LLM check</text>
+
+  <!-- 5. verified matches (not run) -->
+  <rect x="264" y="408" width="432" height="56" rx="8" fill="#f8fafc" stroke="#1f2937" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="480" y="432" text-anchor="middle" font-size="14" font-weight="600" fill="#1f2937">Verified matches</text>
+  <text x="480" y="452" text-anchor="middle" font-size="12" fill="#64748b">not run on the full set; cost modelled only</text>
+
+  <!-- Footnote -->
+  <text x="24" y="488" font-size="12" fill="#64748b">One offline run, 19 October 2026: retrieval and the two full prefilters took 141 s; the whole run, including the sampled prefilter, 158 s.</text>
+  <text x="24" y="505" font-size="12" fill="#64748b">Box widths are not to scale.</text>
+</svg>

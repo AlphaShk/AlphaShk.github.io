@@ -1,0 +1,58 @@
+---
+import { cardFacts, cardResult, cardStack, trackLabel, type Item } from '../lib/data';
+import DiagramPulseSummary from './diagrams/DiagramPulseSummary.astro';
+import DiagramPlatform from './diagrams/DiagramPlatform.astro';
+
+interface Props { item: Item; index: number; feature?: boolean; figNo?: number; headingLevel?: 'h2' | 'h3'; compact?: boolean }
+const { item, index, feature = false, figNo = 1, headingLevel = 'h3', compact = false } = Astro.props;
+const Heading = headingLevel;
+const idx = String(index).padStart(2, '0');
+const titleId = `card-${item.slug}`;
+const facts = compact && !feature ? [] : cardFacts(item);
+const stack = facts.some((f) => /stack/i.test(f.key)) ? '' : cardStack(item);
+const isCase = item.data.page === 'case';
+const diagrams: Record<string, any> = { pulse: DiagramPulseSummary, 'market-data-platform': DiagramPlatform };
+const Diagram = feature ? diagrams[item.slug] : undefined;
+const captions: Record<string, string> = {
+  pulse: 'Two lanes: capture and paper trading on the Pi, research offline on public data. Schematic.',
+  'market-data-platform': 'High-level data flow of the platform. Schematic.',
+};
+const publicLinks = [
+  ...(item.paper?.published ? [{ label: `Paper (PDF, ${item.paper.meta?.split(' · ')[0] || ''})`, href: item.paper.href, ext: false }] : []),
+  ...item.links.filter((l) => l.kind).slice(0, 2).map((l) => ({
+    label: l.kind === 'repo' ? 'Repo' : l.kind === 'demo' ? 'Live demo' : l.kind === 'thesis' ? 'Thesis (PDF)' : l.label,
+    href: l.href,
+    ext: /^https?:/.test(l.href),
+  })),
+];
+---
+<article class:list={['card', { 'card--feature': feature }]} id={item.slug} data-tracks={item.tracks.join(' ')} aria-labelledby={titleId}>
+  <header class="card__head">
+    <p class="card__meta"><span class="card__idx">{idx}</span>{item.tracks.map((t) => trackLabel(t)).join(' · ')}</p>
+    {item.status.length > 0 && (
+      <ul class="card__status" aria-label="Status">
+        {item.status.map((s) => <li class:list={['st', `st--${s.kind}`]}>{s.text}</li>)}
+      </ul>
+    )}
+  </header>
+  <Heading class="card__title" id={titleId}><a href={item.href}>{item.shortTitle}</a></Heading>
+  {Diagram && (
+    <figure class="fig card__fig">
+      <div class="fig__canvas"><Diagram id={`home-${item.slug}`} item={item} /></div>
+      <figcaption><span class="fig__no">Fig. {figNo}</span>{captions[item.slug]}</figcaption>
+    </figure>
+  )}
+  <p class="card__result">{cardResult(item)}</p>
+  {facts.length > 0 && (
+    <dl class="card__facts">
+      {facts.map((f) => <div><dt class="label">{f.key}</dt><dd>{f.value}</dd></div>)}
+    </dl>
+  )}
+  {stack && <p class="card__stack">{stack}</p>}
+  <p class="card__links">
+    <a class="arrow-link" href={item.href}>{isCase ? 'Case study' : 'Project page'}<span class="icon icon--arrow" aria-hidden="true"></span></a>
+    {publicLinks.map((l) => (
+      <a class="is-public" href={l.href}>{l.label}{l.ext && <span class="icon icon--ext" aria-hidden="true"></span>}</a>
+    ))}
+  </p>
+</article>

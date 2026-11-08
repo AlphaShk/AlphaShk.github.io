@@ -1,0 +1,41 @@
+---
+import { keyFigures } from '../site.config';
+import { getItem, metric } from '../lib/data';
+
+interface Props { order: string[] }
+const { order } = Astro.props;
+const statLabels: Record<string, string> = { pulse: 'categories with an edge after costs' };
+const rows = [];
+for (const id of order) {
+  const def = keyFigures.find((k) => k.id === id);
+  if (!def) continue;
+  const item = await getItem(def.work);
+  const m = metric(item, def.value);
+  if (!item || !m) continue;
+  const stat = def.stat ? metric(item, def.stat) : undefined;
+  rows.push({ def, item, m, stat });
+}
+---
+{rows.length > 0 && (
+  <aside class="keyfig" aria-labelledby="kf-title">
+    <div class="keyfig__head">
+      <h2 class="label" id="kf-title">Key figures</h2>
+      <span class="label" aria-hidden="true">Jump to evidence</span>
+    </div>
+    <ol>
+      {rows.map(({ def, item, m, stat }) => (
+        <li>
+          <a class="kf" href={item.href}>
+            <span class="kf__src">{def.source}</span>
+            <span class="kf__arrow icon icon--arrow" aria-hidden="true"></span>
+            <span class="kf__val">{m.value}{def.suffix || ''}</span>
+            {stat && (
+              <span class="kf__stat"><b>{stat.value}</b><span class="label">{statLabels[def.id] || stat.label}</span></span>
+            )}
+            <span class="kf__desc">{m.label}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </aside>
+)}

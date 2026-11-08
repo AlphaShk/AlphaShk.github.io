@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { files, getItem, profile } from '../lib/data';
+
+const caseFor: Record<string, string> = {
+  'alpha-search-crypto-perps': 'pulse',
+  'bsc-thesis-qnn': 'qnn-financial-forecasting',
+  'bass-lv-replication': 'bass-lv-calibration',
+};
+const pubs = await Promise.all(
+  profile.research.map(async (r) => {
+    const item = await getItem(caseFor[r.id]);
+    const paper = r.link ? files.papers.find((p) => p.href === r.link) : undefined;
+    const links: { label: string; href: string; ext?: boolean; arrow?: boolean }[] = [];
+    let unpublished = '';
+    if (r.id === 'alpha-search-crypto-perps') {
+      if (paper) links.push({ label: `Paper (PDF, ${paper.pages} pp)`, href: paper.href });
+      else unpublished = 'Paper not yet public';
+    } else if (r.link) {
+      const isThesis = /thesis\.pdf$/.test(r.link);
+      links.push({ label: isThesis ? 'Thesis (PDF, on GitHub)' : 'Repo', href: r.link, ext: true });
+    }
+    if (r.id === 'bsc-thesis-qnn') {
+      const repo = item?.links.find((l) => l.kind === 'repo');
+      if (repo) links.push({ label: 'Repo', href: repo.href, ext: true });
+    }
+    if (item) links.push({ label: item.data.page === 'case' ? 'Case study' : 'Project page', href: item.href, arrow: true });
+    const venue = [r.kind, paper ? `${paper.pages} pp` : '', String(r.year)].filter(Boolean).join(' · ');
+    return { ...r, links, venue, unpublished };
+  }),
+);
+---
+<Base title="Research · Denys Shkola" description="A working paper on alpha search in crypto perpetual futures, a BSc thesis on quantum neural networks for financial forecasting, and a replication of the Bass local-volatility model on SPX options." section="research">
+  <section class="section page-head" aria-labelledby="research-title">
+    <div class="wrap">
+      <SectionHead kicker={`Research · ${pubs.length} entries`} title="Research" id="research-title" level="h1" intro="A working paper, a bachelor thesis and a paper replication, newest first. Each one states its result, including the negative ones." />
+      <ol class="pubs">
+        {pubs.map((p, i) => (
+          <li>
+            <span class="pub__idx">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h2 class="pub__title">{p.title}</h2>
+              <p class="pub__venue">{p.venue}</p>
+              <p class="pub__summary">{p.summary}</p>
+              <p class="pub__links">
+                {p.links.map((l) => (
+                  <a class:list={[{ 'is-public': !l.arrow, 'arrow-link': l.arrow }]} href={l.href}>{l.label}{l.ext && <span class="icon icon--ext" aria-hidden="true"></span>}{l.arrow && <span class="icon icon--arrow" aria-hidden="true"></span>}</a>
+                ))}
+                {p.unpublished && <span class="st st--private">{p.unpublished}</span>}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="disclaimer">Research only; not investment advice.</p>
+    </div>
+  </section>
+</Base>
