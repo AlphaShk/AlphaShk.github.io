@@ -26,7 +26,8 @@ const pubs = await Promise.all(
       if (repo) links.push({ label: 'Repo', href: repo.href, ext: true });
     }
     if (item) links.push({ label: item.data.page === 'case' ? 'Case study' : 'Project page', href: item.href, arrow: true });
-    const venue = [r.kind, paper ? `short public edition, ${paper.pages} pp` : '', String(r.year)].filter(Boolean).join(' · ');
+    const says = /public edition|\bpp\b|pages/i.test(r.kind);
+    const venue = [r.kind, paper && !says ? `short public edition, ${paper.pages} pp` : '', String(r.year)].filter(Boolean).join(' · ');
     return { ...r, links, venue, unpublished };
   }),
 );
